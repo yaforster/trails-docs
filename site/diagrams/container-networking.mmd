@@ -1,0 +1,10 @@
+flowchart LR
+    host["Host Browser<br/>localhost means host"]
+    service["Trails Service Container<br/>localhost means service container"]
+    node["Browser Node Container<br/>localhost means browser node"]
+    target["Application Under Test"]
+
+    host -->|"http://localhost:4200"| frontend["Frontend"]
+    host -->|"http://localhost:8080"| service
+    service -->|"Docker network name"| selenium["selenium-hub"]
+    node -->|"browser-facing URL"| target

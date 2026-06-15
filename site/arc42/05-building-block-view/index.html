@@ -1,0 +1,1729 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../04-solution-strategy/">
+      
+      
+        <link rel="next" href="../06-runtime-view/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5. Building Block View - Trails Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-building-block-view" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Trails Documentation" class="md-header__button md-logo" aria-label="Trails Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Trails Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Building Block View
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-introduction-goals/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../adr/0001-use-established-core-implementation-technologies/" class="md-tabs__link">
+          
+  
+  
+  ADRs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Trails Documentation" class="md-nav__button md-logo" aria-label="Trails Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Trails Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction-goals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction and Goals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-context-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Context and Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-solution-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Solution Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Building Block View
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Building Block View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-trails-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1: Trails System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-trails-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: Trails Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2: Trails Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-domain-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Domain Areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapter-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapter Areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-trails-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: Trails Frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-trails-scout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: Trails Scout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-documentation-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2: Documentation Site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Points
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-runtime-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Runtime View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-deployment-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Deployment View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-crosscutting-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Crosscutting Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-quality-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Quality Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-risks-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Risks and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADRs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0001-use-established-core-implementation-technologies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0001. Use Established Core Technologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0002-store-screenshots-and-downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0002. Store Screenshots and Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0003-use-openapi-as-api-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0003. Use OpenAPI as API Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0004-use-mysql-and-liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0004. Use MySQL and Liquibase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0005-use-docker-compose-for-local-orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0005. Use Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0006-use-keycloak-for-local-oauth2-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0006. Use Keycloak
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0007-use-mkdocs-material-arc42-and-adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0007. Use MkDocs Material
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0008-build-trails-scout-as-browser-extension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0008. Build Trails Scout as Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0009-use-spring-boot-for-backend-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0009. Use Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0010-use-angular-for-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0010. Use Angular
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0011-use-selenium-grid-for-browser-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0011. Use Selenium Grid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-building-block-view">5. Building Block View</h1>
+<p>This section describes the static structure of Trails.
+It starts with the whole system and then opens the most important internal building blocks.</p>
+<p>The most detailed view is currently the backend service, because it contains the central domain model, use cases, persistence integration, browser automation, API exposure, and security integration.</p>
+<h2 id="level-1-trails-system">Level 1: Trails System</h2>
+<p>At the highest level, Trails consists of the backend service, frontend, browser extension, documentation site, and supporting infrastructure.</p>
+<pre class="mermaid"><code>flowchart LR
+    frontend["Trails Frontend&lt;br/&gt;Angular"]
+    scout["Trails Scout&lt;br/&gt;Browser extension"]
+    service["Trails Service&lt;br/&gt;Spring Boot"]
+    docs["Trails Docs&lt;br/&gt;MkDocs"]
+    mysql[("MySQL")]
+    selenium["Selenium Grid"]
+    browsers["Browser Nodes"]
+    keycloak["Keycloak&lt;br/&gt;optional"]
+    target["Application Under Test"]
+
+    frontend --&gt;|"REST/HATEOAS"| service
+    scout --&gt;|"locator discovery context"| target
+    service --&gt;|"JDBC/JPA"| mysql
+    service --&gt;|"WebDriver"| selenium
+    selenium --&gt; browsers
+    browsers --&gt; target
+    service --&gt;|"JWT validation"| keycloak
+    frontend --&gt;|"auth flow/token use"| keycloak
+    docs -.-&gt;|"documents"| frontend
+    docs -.-&gt;|"documents"| service
+    docs -.-&gt;|"documents"| scout
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Building Block</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trails Service</td>
+<td>Central backend for Trails data, use cases, REST/HATEOAS API, persistence, browser automation orchestration, security integration, and execution results.</td>
+</tr>
+<tr>
+<td>Trails Frontend</td>
+<td>Angular web application for human interaction with Trails.</td>
+</tr>
+<tr>
+<td>Trails Scout</td>
+<td>Browser extension for identifying locators and page elements in the application under test.</td>
+</tr>
+<tr>
+<td>Trails Docs</td>
+<td>MkDocs Material documentation site containing ARC42 documentation and ADRs.</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Relational persistence for structured Trails data.</td>
+</tr>
+<tr>
+<td>Selenium Grid and browser nodes</td>
+<td>Remote browser execution infrastructure.</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>Optional local OAuth2/JWT identity provider for secured scenarios.</td>
+</tr>
+<tr>
+<td>Application Under Test</td>
+<td>External web application operated by Selenium-controlled browsers and inspected by Trails Scout.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="level-2-trails-service">Level 2: Trails Service</h2>
+<p>Trails Service follows a layered architecture with a hexagonal direction.
+The architecture tests enforce important dependency rules:</p>
+<ul>
+<li>bootstrap code is not accessed by other layers</li>
+<li>core code may be accessed by application and adapter code</li>
+<li>application code may be accessed by adapter code</li>
+<li>adapter code is not accessed by other layers</li>
+<li>generated API DTOs must not leak outside the API adapter</li>
+<li>database adapter internals must not leak to other packages</li>
+<li>non-API adapters must not depend on the API adapter</li>
+</ul>
+<pre class="mermaid"><code>flowchart TB
+    bootstrap["Bootstrap&lt;br/&gt;Spring Boot application"]
+    adapter["Adapter Layer&lt;br/&gt;REST, DB, Selenium, Security, Print, Capabilities"]
+    app["Application Layer&lt;br/&gt;Use case services and ports"]
+    core["Core Layer&lt;br/&gt;Domain model, actions, results, validation concepts"]
+    external["External Systems&lt;br/&gt;MySQL, Selenium Grid, Keycloak, filesystem"]
+
+    bootstrap --&gt; adapter
+    adapter --&gt; app
+    adapter --&gt; core
+    app --&gt; core
+    adapter --&gt; external
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Building Block</th>
+<th>Package Area</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bootstrap</td>
+<td><code>io.github.yaforster.trails</code></td>
+<td>Starts the Spring Boot application and wires the runtime.</td>
+</tr>
+<tr>
+<td>Core</td>
+<td><code>core</code></td>
+<td>Contains domain concepts, test execution model, action types, result models, validation concepts, deletion concepts, user concepts, and shared value classes.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td><code>app.services</code></td>
+<td>Defines use case services and service contracts used by adapters.</td>
+</tr>
+<tr>
+<td>API Adapter</td>
+<td><code>adapter.api</code></td>
+<td>Exposes REST/HATEOAS and AsyncAPI-related interfaces, handles security integration, request validation, API DTO mapping, and link generation.</td>
+</tr>
+<tr>
+<td>Database Adapter</td>
+<td><code>adapter.db</code></td>
+<td>Implements persistence through entities, repositories, mappers, Liquibase-backed schema, and promotion/reference handling.</td>
+</tr>
+<tr>
+<td>Browser/Test Adapter</td>
+<td><code>adapter.test</code></td>
+<td>Integrates Selenium/WebDriver and wraps browser execution details.</td>
+</tr>
+<tr>
+<td>Capability Adapter</td>
+<td><code>adapter.capability</code></td>
+<td>Reports runtime capabilities and restrictions to clients.</td>
+</tr>
+<tr>
+<td>Print Adapter</td>
+<td><code>adapter.print</code></td>
+<td>Handles print/PDF-related adapter concerns.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="core-domain-areas">Core Domain Areas</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core.definition</code></td>
+<td>Definitions such as applications, stages, elements, locators, and related modeling concepts.</td>
+</tr>
+<tr>
+<td><code>core.test</code></td>
+<td>Test plans, test paths, test sets, execution concepts, actions, and results.</td>
+</tr>
+<tr>
+<td><code>core.test.action</code></td>
+<td>Browser action model, grouped by feature areas such as browser, document, download, element, value, and viewport behavior.</td>
+</tr>
+<tr>
+<td><code>core.test.result</code></td>
+<td>Success and failure result models produced by execution.</td>
+</tr>
+<tr>
+<td><code>core.data</code></td>
+<td>Reusable test data concepts.</td>
+</tr>
+<tr>
+<td><code>core.persisted</code></td>
+<td>Concepts related to persisted resources and identity.</td>
+</tr>
+<tr>
+<td><code>core.deletion</code></td>
+<td>Retire, restore, or deletion-related domain concepts.</td>
+</tr>
+<tr>
+<td><code>core.user</code></td>
+<td>User/profile-related domain concepts.</td>
+</tr>
+<tr>
+<td><code>core.print</code></td>
+<td>Domain-facing print concepts.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adapter-areas">Adapter Areas</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>adapter.api.rest</code></td>
+<td>REST controllers, generated DTO mapping, validation, HATEOAS links, and resource-specific API adapters.</td>
+</tr>
+<tr>
+<td><code>adapter.api.asyncapi</code></td>
+<td>AsyncAPI/event-related API model and execution event concerns.</td>
+</tr>
+<tr>
+<td><code>adapter.api.security</code></td>
+<td>OAuth2/JWT, role extraction, and security adapter behavior.</td>
+</tr>
+<tr>
+<td><code>adapter.db.entity</code></td>
+<td>Database entity model.</td>
+</tr>
+<tr>
+<td><code>adapter.db.repo</code></td>
+<td>Database repositories.</td>
+</tr>
+<tr>
+<td><code>adapter.db.mapper</code></td>
+<td>Conversion between database entities and domain models.</td>
+</tr>
+<tr>
+<td><code>adapter.db.promotion</code></td>
+<td>Copying and promotion behavior for test plan/action details.</td>
+</tr>
+<tr>
+<td><code>adapter.test.driver</code></td>
+<td>Selenium/WebDriver integration, managed downloads, and driver abstractions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="level-2-trails-frontend">Level 2: Trails Frontend</h2>
+<p>Trails Frontend is an Angular application organized around application shell, shared services, generated API clients, and feature areas.</p>
+<pre class="mermaid"><code>flowchart TB
+    shell["Application Shell&lt;br/&gt;routing and layout"]
+    auth["Auth&lt;br/&gt;login, guards, current user"]
+    context["Workspace Context&lt;br/&gt;selected application/stage"]
+    core["Core Services&lt;br/&gt;API config, capabilities, HATEOAS helpers"]
+    generated["Generated API Clients&lt;br/&gt;OpenAPI/AsyncAPI models"]
+    features["Feature Areas&lt;br/&gt;data management, modeller, results, metrics"]
+
+    shell --&gt; auth
+    shell --&gt; features
+    features --&gt; context
+    features --&gt; core
+    features --&gt; generated
+    auth --&gt; core
+    core --&gt; generated
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Building Block</th>
+<th>Package Area</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application Shell</td>
+<td><code>app</code>, <code>layout</code></td>
+<td>Top-level routing, layout, and page shell.</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><code>auth</code></td>
+<td>Login flow, route guards, token handling, and current user profile access.</td>
+</tr>
+<tr>
+<td>Workspace Context</td>
+<td><code>context</code></td>
+<td>Tracks selected application/stage context used by multiple workflows.</td>
+</tr>
+<tr>
+<td>Core Services</td>
+<td><code>core</code></td>
+<td>API configuration, capabilities, HATEOAS link helpers, and shared frontend services.</td>
+</tr>
+<tr>
+<td>Generated API Clients</td>
+<td><code>generated</code></td>
+<td>Generated OpenAPI/AsyncAPI client code and types.</td>
+</tr>
+<tr>
+<td>Data Management</td>
+<td><code>features/data-management</code></td>
+<td>CRUD and administration workflows for Trails resources.</td>
+</tr>
+<tr>
+<td>Test Plan Modeller</td>
+<td><code>features/test-plan-modeller</code></td>
+<td>Interactive modeling of test plans and action paths.</td>
+</tr>
+<tr>
+<td>Test Results</td>
+<td><code>features/test-results</code></td>
+<td>Display and inspection of saved test execution results and artifacts.</td>
+</tr>
+<tr>
+<td>Metrics</td>
+<td><code>features/metrics</code></td>
+<td>Test run metrics, summaries, timelines, and calendar-related views.</td>
+</tr>
+<tr>
+<td>Test Execution Events</td>
+<td><code>test-execution</code></td>
+<td>Frontend handling for execution event streams and execution status.</td>
+</tr>
+</tbody>
+</table>
+<p>Frontend business rules should remain aligned with the backend API and domain behavior.
+The frontend may handle interaction state, client-side presentation, and user feedback, but the backend remains the source of truth for persisted Trails data.</p>
+<h2 id="level-2-trails-scout">Level 2: Trails Scout</h2>
+<p>Trails Scout is a browser extension for identifying locators and page elements in the application under test.
+It is separate from the Angular frontend because locator discovery needs direct access to the inspected page context.</p>
+<pre class="mermaid"><code>flowchart TB
+    popup["Popup UI&lt;br/&gt;settings, auth, element/resource controls"]
+    content["Content Script&lt;br/&gt;page inspection"]
+    inspector["Injected Inspector&lt;br/&gt;element selection in page context"]
+    locators["Locator Logic&lt;br/&gt;locator candidates and formatting"]
+    background["Background Script&lt;br/&gt;extension runtime coordination"]
+    trailsApi["Trails API integration&lt;br/&gt;popup/api.ts"]
+    target["Application Under Test"]
+
+    popup --&gt; content
+    content --&gt; inspector
+    inspector --&gt; target
+    inspector --&gt; locators
+    popup --&gt; trailsApi
+    popup --&gt; background
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Building Block</th>
+<th>Package Area</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Popup UI</td>
+<td><code>src/popup</code></td>
+<td>User-facing extension popup, settings, tabs, auth/token panel, and element/resource controls.</td>
+</tr>
+<tr>
+<td>Content Script</td>
+<td><code>src/content</code> and <code>content-inspector.ts</code></td>
+<td>Runs in the browser page context boundary and coordinates inspection behavior.</td>
+</tr>
+<tr>
+<td>Injected Inspector</td>
+<td><code>injected-inspector.ts</code></td>
+<td>Performs page-level inspection behavior for element selection.</td>
+</tr>
+<tr>
+<td>Locator Logic</td>
+<td><code>locator-selectors.ts</code>, <code>popup/locator.ts</code></td>
+<td>Creates or formats locator candidates for selected elements.</td>
+</tr>
+<tr>
+<td>Background Script</td>
+<td><code>src/background</code></td>
+<td>Browser extension runtime coordination.</td>
+</tr>
+<tr>
+<td>Trails API Integration</td>
+<td><code>popup/api.ts</code></td>
+<td>Communication from the extension popup toward Trails API capabilities where needed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="level-2-documentation-site">Level 2: Documentation Site</h2>
+<p>Trails Docs is a separate MkDocs Material site.
+It contains the ARC42 architecture documentation, ADRs, and diagram sources.</p>
+<table>
+<thead>
+<tr>
+<th>Building Block</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs/arc42</code></td>
+<td>Stable architecture documentation structured by ARC42 chapters.</td>
+</tr>
+<tr>
+<td><code>docs/adr</code></td>
+<td>Architecture decision records for point-in-time decisions.</td>
+</tr>
+<tr>
+<td><code>docs/diagrams</code></td>
+<td>Mermaid source files for diagrams referenced from documentation pages.</td>
+</tr>
+<tr>
+<td><code>mkdocs.yaml</code></td>
+<td>Site configuration, navigation, theme, Markdown extensions, and Mermaid/snippet support.</td>
+</tr>
+<tr>
+<td><code>docker-compose.yaml</code></td>
+<td>Local containerized documentation server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dependency-rules">Dependency Rules</h2>
+<p>The most important building-block rules are:</p>
+<ul>
+<li>Domain and application behavior must not depend on REST, database, Selenium, or security adapter implementation details.</li>
+<li>Generated API DTOs belong to API adapters and must not become domain types.</li>
+<li>Database entities, repositories, and database mappers belong to the database adapter.</li>
+<li>Non-API adapters should not depend on API adapters.</li>
+<li>Selenium/WebDriver details should stay inside browser/test adapters.</li>
+<li>Frontend code should use generated API contracts and HATEOAS links instead of hard-coded backend URL assumptions.</li>
+<li>Documentation diagrams should live in <code>docs/diagrams</code> and be included from Markdown pages.</li>
+</ul>
+<h2 id="open-points">Open Points</h2>
+<p>The following building-block details should be refined as Trails evolves:</p>
+<ul>
+<li>the final abstraction and storage model for generated artifacts</li>
+<li>the long-term integration contract between Trails Scout and Trails Service</li>
+<li>the exact boundary between frontend interaction state and backend-owned workflow state</li>
+<li>whether execution events become a larger asynchronous subsystem</li>
+<li>whether documentation PDF export becomes a separate build component</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tracking", "toc.follow", "toc.integrate", "search.suggest", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

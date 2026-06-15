@@ -1,0 +1,15 @@
+flowchart TB
+    popup["Popup UI<br/>settings, auth, element/resource controls"]
+    content["Content Script<br/>page inspection"]
+    inspector["Injected Inspector<br/>element selection in page context"]
+    locators["Locator Logic<br/>locator candidates and formatting"]
+    background["Background Script<br/>extension runtime coordination"]
+    trailsApi["Trails API integration<br/>popup/api.ts"]
+    target["Application Under Test"]
+
+    popup --> content
+    content --> inspector
+    inspector --> target
+    inspector --> locators
+    popup --> trailsApi
+    popup --> background

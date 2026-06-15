@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant Action as Download/Document Action
+    participant Driver as DownloadTrackedDriver
+    participant Browser as Browser Node
+    participant Selenium as Selenium Managed Downloads
+    participant Result as Test Result Model
+    participant DB as Persistence
+    participant User
+    participant API as Artifact API
+
+    Action->>Browser: Trigger download
+    Browser->>Selenium: Register downloadable files for session
+    Action->>Driver: Collect downloaded files
+    Driver->>Selenium: Poll managed downloads
+    Selenium-->>Driver: Stable downloadable file metadata/content
+    Driver->>Selenium: Delete downloadable files after capture
+    Driver-->>Action: Downloaded artifacts
+    Action->>Result: Attach artifact/result data
+    Result->>DB: Persist result and artifact references
+    User->>API: Request artifact or screenshot
+    API->>DB: Find artifact in result path
+    DB-->>API: Artifact file
+    API-->>User: Binary response

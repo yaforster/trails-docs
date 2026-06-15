@@ -1,0 +1,12 @@
+flowchart TB
+    bootstrap["Bootstrap<br/>Spring Boot application"]
+    adapter["Adapter Layer<br/>REST, DB, Selenium, Security, Print, Capabilities"]
+    app["Application Layer<br/>Use case services and ports"]
+    core["Core Layer<br/>Domain model, actions, results, validation concepts"]
+    external["External Systems<br/>MySQL, Selenium Grid, Keycloak, filesystem"]
+
+    bootstrap --> adapter
+    adapter --> app
+    adapter --> core
+    app --> core
+    adapter --> external

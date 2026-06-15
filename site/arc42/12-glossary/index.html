@@ -1,0 +1,1507 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../11-risks-technical-debt/">
+      
+      
+        <link rel="next" href="../../adr/0001-use-established-core-implementation-technologies/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>12. Glossary - Trails Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-glossary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Trails Documentation" class="md-header__button md-logo" aria-label="Trails Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Trails Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              12. Glossary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-introduction-goals/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../adr/0001-use-established-core-implementation-technologies/" class="md-tabs__link">
+          
+  
+  
+  ADRs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Trails Documentation" class="md-nav__button md-logo" aria-label="Trails Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Trails Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction-goals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction and Goals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-context-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Context and Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-solution-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Solution Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-building-block-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Building Block View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-runtime-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Runtime View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-deployment-view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Deployment View
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-crosscutting-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Crosscutting Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Architecture Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-quality-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Quality Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-risks-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Risks and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Glossary
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminology-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminology Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADRs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADRs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0001-use-established-core-implementation-technologies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0001. Use Established Core Technologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0002-store-screenshots-and-downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0002. Store Screenshots and Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0003-use-openapi-as-api-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0003. Use OpenAPI as API Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0004-use-mysql-and-liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0004. Use MySQL and Liquibase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0005-use-docker-compose-for-local-orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0005. Use Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0006-use-keycloak-for-local-oauth2-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0006. Use Keycloak
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0007-use-mkdocs-material-arc42-and-adrs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0007. Use MkDocs Material
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0008-build-trails-scout-as-browser-extension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0008. Build Trails Scout as Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0009-use-spring-boot-for-backend-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0009. Use Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0010-use-angular-for-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0010. Use Angular
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/0011-use-selenium-grid-for-browser-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0011. Use Selenium Grid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-glossary">12. Glossary</h1>
+<p>This glossary defines important terms used in the Trails architecture documentation.
+The definitions focus on how the terms are used inside Trails.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action</td>
+<td>A single executable step in a Trails test plan, such as opening a page, interacting with an element, checking a value, waiting, scrolling, or validating a downloaded document.</td>
+</tr>
+<tr>
+<td>Action Result</td>
+<td>The result produced by executing one action. It may indicate success, failure, diagnostic information, screenshots, or artifact references.</td>
+</tr>
+<tr>
+<td>Adapter</td>
+<td>A backend implementation area that connects Trails core/application behavior to external technologies such as REST, database persistence, Selenium, security, printing, or capabilities.</td>
+</tr>
+<tr>
+<td>ADR</td>
+<td>Architecture Decision Record. A Markdown document that captures an important architectural decision, its context, alternatives, consequences, and status.</td>
+</tr>
+<tr>
+<td>Angular</td>
+<td>The frontend framework used by Trails Frontend.</td>
+</tr>
+<tr>
+<td>API Adapter</td>
+<td>Backend adapter area that exposes REST/HATEOAS APIs, generated DTOs, validation, security integration, and link generation.</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>In Trails, an application is a modeled system under test. Do not confuse this with the Trails application itself.</td>
+</tr>
+<tr>
+<td>Application Layer</td>
+<td>Backend layer containing use case services and service contracts used by adapters.</td>
+</tr>
+<tr>
+<td>Application Under Test</td>
+<td>The external web application opened by Selenium-controlled browsers or inspected by Trails Scout.</td>
+</tr>
+<tr>
+<td>ARC42</td>
+<td>The structure used for this architecture documentation.</td>
+</tr>
+<tr>
+<td>Artifact</td>
+<td>A generated file or evidence item produced during test execution, such as a screenshot, downloaded file, rendered document, or diagnostic file.</td>
+</tr>
+<tr>
+<td>Artifact Storage</td>
+<td>The storage location or mechanism used for generated artifacts. This may differ from relational database storage.</td>
+</tr>
+<tr>
+<td>AsyncAPI</td>
+<td>API description format used for asynchronous/event-related contracts where applicable.</td>
+</tr>
+<tr>
+<td>Browser Action</td>
+<td>An action that operates a browser or web page through Selenium/WebDriver.</td>
+</tr>
+<tr>
+<td>Browser Node</td>
+<td>A Selenium Grid node that runs a real browser such as Chrome, Firefox, or Edge.</td>
+</tr>
+<tr>
+<td>Browser-Facing URL</td>
+<td>A URL that must be reachable from inside a Selenium browser node. This may differ from a URL that works in the host browser.</td>
+</tr>
+<tr>
+<td>Capability</td>
+<td>Runtime information exposed by Trails to tell clients what features, restrictions, or configuration-dependent behavior are available.</td>
+</tr>
+<tr>
+<td>CI/CD Pipeline</td>
+<td>External automation system that may report deployments or trigger test-related workflows through the Trails API.</td>
+</tr>
+<tr>
+<td>Core Layer</td>
+<td>Backend layer containing Trails domain concepts, action models, result models, validation concepts, and shared value classes.</td>
+</tr>
+<tr>
+<td>Database Adapter</td>
+<td>Backend adapter area responsible for entities, repositories, database mappers, schema migrations, and persistence behavior.</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>In Trails, a recorded deployment of an application or stage that can be used for traceability and reporting.</td>
+</tr>
+<tr>
+<td>Docker Compose</td>
+<td>The local orchestration mechanism used to start Trails components and supporting infrastructure.</td>
+</tr>
+<tr>
+<td>DTO</td>
+<td>Data Transfer Object. In Trails, generated API DTOs belong to the API adapter and must not become domain model types.</td>
+</tr>
+<tr>
+<td>Element</td>
+<td>A modeled UI element in an application/stage, usually identified by one or more locators.</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>A concrete run of a test plan against selected browsers and runtime data.</td>
+</tr>
+<tr>
+<td>Execution ID</td>
+<td>UUID assigned when Trails accepts an asynchronous test execution request. Used to subscribe to execution events.</td>
+</tr>
+<tr>
+<td>Generated API Client</td>
+<td>Frontend code generated from API contracts, used to call the Trails backend or type API payloads.</td>
+</tr>
+<tr>
+<td>Generated DTO</td>
+<td>Backend API model generated from OpenAPI or AsyncAPI contracts.</td>
+</tr>
+<tr>
+<td>HATEOAS</td>
+<td>REST style where responses contain links that describe available next actions. Trails uses HATEOAS links so clients do not need to hard-code every URL.</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>Optional local identity provider used for OAuth2/JWT security scenarios.</td>
+</tr>
+<tr>
+<td>Liquibase</td>
+<td>Database migration tool used by Trails Service for versioned schema evolution.</td>
+</tr>
+<tr>
+<td>Locator</td>
+<td>A selector-like expression used to find a UI element on a web page. Trails standardizes on the term "locator" rather than "selector".</td>
+</tr>
+<tr>
+<td>Managed Download</td>
+<td>Selenium mechanism for retrieving files downloaded by a remote browser session without relying on a shared filesystem.</td>
+</tr>
+<tr>
+<td>Mermaid</td>
+<td>Text-based diagram syntax used for diagrams in the documentation. Mermaid source files live in <code>docs/diagrams</code>.</td>
+</tr>
+<tr>
+<td>MkDocs Material</td>
+<td>Documentation site generator and theme used for the Trails Docs website.</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Relational database used for structured Trails data.</td>
+</tr>
+<tr>
+<td>OAuth2/JWT Mode</td>
+<td>Optional secured backend mode where API requests require valid bearer tokens and role mapping.</td>
+</tr>
+<tr>
+<td>OpenAPI</td>
+<td>Contract format used as the source of truth for the Trails REST API.</td>
+</tr>
+<tr>
+<td>Persistence Adapter</td>
+<td>See Database Adapter.</td>
+</tr>
+<tr>
+<td>Retire</td>
+<td>Trails behavior that removes an entity from normal active use without necessarily destroying historic traceability.</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td>Making a retired entity available again where supported.</td>
+</tr>
+<tr>
+<td>REST API</td>
+<td>HTTP API exposed by Trails Service for frontend, automation clients, and possible CI/CD integrations.</td>
+</tr>
+<tr>
+<td>Result Indicator</td>
+<td>Summary classification of a result, such as success, failure, or partial success.</td>
+</tr>
+<tr>
+<td>Selenium Grid</td>
+<td>Remote browser execution infrastructure used by Trails Service.</td>
+</tr>
+<tr>
+<td>Server-Sent Events</td>
+<td>HTTP event stream mechanism used by Trails to publish asynchronous test execution events to clients.</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>Backend framework used by Trails Service.</td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>A modeled environment or stage of an application under test. Stages help distinguish targets such as local, test, staging, or production-like environments.</td>
+</tr>
+<tr>
+<td>Test Data</td>
+<td>Reusable data modeled in Trails and used by test plans or actions.</td>
+</tr>
+<tr>
+<td>Test Designer</td>
+<td>User role or activity focused on defining applications, stages, UI elements, test plans, and browser actions.</td>
+</tr>
+<tr>
+<td>Test Executor</td>
+<td>User role or activity focused on starting test executions and inspecting results.</td>
+</tr>
+<tr>
+<td>Test Execution Event</td>
+<td>Runtime event published for an execution, such as <code>test.started</code>, <code>test.completed</code>, <code>test.failed</code>, or <code>test.terminal</code>.</td>
+</tr>
+<tr>
+<td>Test Path</td>
+<td>A path through a test plan or execution model. Test path results are part of persisted execution results.</td>
+</tr>
+<tr>
+<td>Test Plan</td>
+<td>A modeled set of browser actions and paths that can be executed by Trails.</td>
+</tr>
+<tr>
+<td>Test Run</td>
+<td>A persisted execution result of a test plan.</td>
+</tr>
+<tr>
+<td>Test Set</td>
+<td>Runtime grouping of test execution work, commonly arranged per selected browser.</td>
+</tr>
+<tr>
+<td>Trails Docs</td>
+<td>The MkDocs Material documentation site containing ARC42 documentation, ADRs, and diagram sources.</td>
+</tr>
+<tr>
+<td>Trails Frontend</td>
+<td>Angular web application used to interact with Trails from a browser.</td>
+</tr>
+<tr>
+<td>Trails Scout</td>
+<td>Browser extension used to inspect pages and identify locator candidates.</td>
+</tr>
+<tr>
+<td>Trails Service</td>
+<td>Spring Boot backend service that owns the core Trails API, persistence integration, Selenium orchestration, execution results, and security integration.</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Request or domain input checking that prevents invalid data from entering use cases or persistence.</td>
+</tr>
+<tr>
+<td>WebDriver</td>
+<td>Selenium API used by Trails to operate remote browsers.</td>
+</tr>
+<tr>
+<td>Workspace Context</td>
+<td>Frontend concept for the currently selected application/stage context used across workflows.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminology-notes">Terminology Notes</h2>
+<table>
+<thead>
+<tr>
+<th>Prefer</th>
+<th>Avoid</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Locator</td>
+<td>Selector</td>
+<td>Trails renamed selector terminology to locator to align with browser automation vocabulary.</td>
+</tr>
+<tr>
+<td>Application under test</td>
+<td>Website, target, AUT without definition</td>
+<td>The full term is clearer in architecture documentation.</td>
+</tr>
+<tr>
+<td>Artifact</td>
+<td>Random file, output file</td>
+<td>Artifacts are managed execution evidence and should remain traceable.</td>
+</tr>
+<tr>
+<td>Retire</td>
+<td>Delete, when historic traceability must remain intact</td>
+<td>Trails uses retirement/restoration where hard deletion would break historic inspection.</td>
+</tr>
+<tr>
+<td>Browser node</td>
+<td>Browser, when discussing deployment</td>
+<td>A browser node is the container/runtime that owns the browser session.</td>
+</tr>
+<tr>
+<td>Browser-facing URL</td>
+<td>Localhost URL</td>
+<td>The URL must work from the Selenium browser node, not merely from the host machine.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tracking", "toc.follow", "toc.integrate", "search.suggest", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

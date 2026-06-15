@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant User
+    participant Frontend as Trails Frontend
+    participant Keycloak
+    participant Service as Trails Service
+    participant API as REST Adapter
+    participant App as Application Service
+    participant DB as Database Adapter
+    participant MySQL
+
+    User->>Frontend: Open secured workflow
+    Frontend->>Keycloak: Obtain or refresh token
+    Keycloak-->>Frontend: JWT
+    Frontend->>Service: API request with bearer token
+    Service->>Service: Validate JWT and map roles
+    Service->>API: Route request to controller
+    API->>App: Call use case service
+    App->>DB: Load or store Trails data
+    DB->>MySQL: Query/update relational data
+    MySQL-->>DB: Result
+    DB-->>App: Domain model/result
+    App-->>API: Use case result
+    API-->>Frontend: REST/HATEOAS response
+    Frontend-->>User: Update UI

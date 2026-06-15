@@ -1,0 +1,22 @@
+flowchart LR
+    frontend["Trails Frontend<br/>Angular"]
+    scout["Trails Scout<br/>Browser extension"]
+    service["Trails Service<br/>Spring Boot"]
+    docs["Trails Docs<br/>MkDocs"]
+    mysql[("MySQL")]
+    selenium["Selenium Grid"]
+    browsers["Browser Nodes"]
+    keycloak["Keycloak<br/>optional"]
+    target["Application Under Test"]
+
+    frontend -->|"REST/HATEOAS"| service
+    scout -->|"locator discovery context"| target
+    service -->|"JDBC/JPA"| mysql
+    service -->|"WebDriver"| selenium
+    selenium --> browsers
+    browsers --> target
+    service -->|"JWT validation"| keycloak
+    frontend -->|"auth flow/token use"| keycloak
+    docs -.->|"documents"| frontend
+    docs -.->|"documents"| service
+    docs -.->|"documents"| scout

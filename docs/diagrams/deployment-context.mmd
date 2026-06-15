@@ -1,0 +1,28 @@
+flowchart LR
+    user["User Browser"]
+    scout["Trails Scout<br/>browser extension"]
+    frontend["Trails Frontend<br/>Angular app"]
+    service["Trails Service<br/>Spring Boot"]
+    mysql[("MySQL<br/>Trails data")]
+    keycloak["Keycloak<br/>optional OAuth2/JWT"]
+    hub["Selenium Hub"]
+    chrome["Chrome Node"]
+    firefox["Firefox Node"]
+    edge["Edge Node"]
+    target["Application Under Test"]
+    docs["Trails Docs<br/>MkDocs Material"]
+
+    user --> frontend
+    user --> docs
+    user --> scout
+    frontend --> service
+    service --> mysql
+    service --> keycloak
+    service --> hub
+    hub --> chrome
+    hub --> firefox
+    hub --> edge
+    chrome --> target
+    firefox --> target
+    edge --> target
+    scout --> target

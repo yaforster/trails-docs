@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User
+    participant Frontend as Trails Frontend
+    participant Service as Trails Service
+    participant Grid as Selenium Hub
+    participant Node as Browser Node
+    participant Target as Application Under Test
+
+    User->>Frontend: Start test execution
+    Frontend->>Service: Submit execution request
+    Service->>Grid: Request remote browser session
+    Grid->>Node: Assign browser node
+    Service->>Node: Execute browser actions
+    Node->>Target: Open and operate target application
+    Target-->>Node: Web pages, downloads, responses
+    Node-->>Service: Results and managed downloads
+    Service-->>Frontend: Execution result and diagnostics
+    Frontend-->>User: Show status and artifacts
