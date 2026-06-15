@@ -1,9 +1,0 @@
-flowchart LR
-    mysql["MySQL<br/>health checked"]
-    keycloak["Keycloak<br/>service started"]
-    hub["Selenium Hub<br/>service started"]
-    service["Trails Service"]
-
-    mysql -->|"healthy"| service
-    keycloak -->|"started"| service
-    hub -->|"started"| service
