@@ -1,10 +1,22 @@
 site_name: Trails Documentation
+repo_url: https://codeberg.org/yaforster/trails-docs
+repo_name: yaforster/trails-docs
 
 theme:
   name: material
-  color_mode: auto
-  user_color_mode_toggle: true
-  nav_style: primary
+  palette:
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   features:
     - navigation.sections
     - navigation.expand
@@ -18,6 +30,8 @@ theme:
     - content.code.copy
 
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
@@ -25,8 +39,12 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
+extra_css:
+  - stylesheets/repositories.css
+
 nav:
   - Home: index.md
+  - Repositories: repositories.md
   - Architecture:
       - "1. Introduction and Goals": arc42/01-introduction-goals.md
       - "2. Constraints": arc42/02-constraints.md
@@ -52,3 +70,9 @@ nav:
       - "0009. Use Spring Boot": adr/0009-use-spring-boot-for-backend-service.md
       - "0010. Use Angular": adr/0010-use-angular-for-frontend.md
       - "0011. Use Selenium Grid": adr/0011-use-selenium-grid-for-browser-automation.md
+  - Dev Guide:
+      - Overview: dev-guide/index.md
+      - Trails Service: dev-guide/trails-service.md
+      - Trails Frontend: dev-guide/trails-frontend.md
+      - Trails Scout: dev-guide/trails-scout.md
+      - Trails Docs: dev-guide/trails-docs.md

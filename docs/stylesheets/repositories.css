@@ -1,0 +1,62 @@
+.repository-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin: 1rem 0;
+}
+
+.repository-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+
+.repository-card h2 {
+  margin-top: 0;
+}
+
+.repository-card p {
+  margin-bottom: 0.75rem;
+}
+
+.repository-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.repository-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+}
+
+.repository-stack-item {
+  align-items: center;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.35rem;
+  display: inline-flex;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.45rem;
+}
+
+.repository-stack-item img {
+  height: 1.25rem;
+  object-fit: contain;
+  width: 1.25rem;
+}
+
+.repository-stack-item span {
+  color: var(--md-default-fg-color);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.repository-card a.repository-link {
+  font-weight: 600;
+}

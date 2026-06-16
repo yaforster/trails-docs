@@ -11,6 +11,7 @@ It is meant to explain what the system is, why it is shaped the way it is, where
 | Topic | Start With |
 | --- | --- |
 | New to Trails | [Introduction and Goals](arc42/01-introduction-goals.md) |
+| Code repositories | [Repositories](repositories.md) |
 | System boundary and external systems | [Context and Scope](arc42/03-context-scope.md) |
 | Main architecture approach | [Solution Strategy](arc42/04-solution-strategy.md) |
 | Static structure | [Building Block View](arc42/05-building-block-view.md) |
@@ -18,6 +19,7 @@ It is meant to explain what the system is, why it is shaped the way it is, where
 | Docker and deployment shape | [Deployment View](arc42/07-deployment-view.md) |
 | Repeating architecture concepts | [Crosscutting Concepts](arc42/08-crosscutting-concepts.md) |
 | Technology decisions | [Architecture Decisions](arc42/09-architecture-decisions.md) |
+| Local development setup | [Dev Guide](dev-guide/index.md) |
 | Risks and technical debt | [Risks and Technical Debt](arc42/11-risks-technical-debt.md) |
 | Terminology | [Glossary](arc42/12-glossary.md) |
 
@@ -32,6 +34,11 @@ It is meant to explain what the system is, why it is shaped the way it is, where
 | Selenium Grid | Remote browser execution infrastructure. |
 | Keycloak | Optional local OAuth2/JWT provider for secured scenarios. |
 | Trails Docs | This MkDocs Material documentation site. |
+
+## Repositories
+
+The Trails workspace is split into separate Codeberg repositories.
+See [Repositories](repositories.md) for badge-style links, versions, and repository responsibilities.
 
 ## Architecture Documentation
 
@@ -62,6 +69,15 @@ Key ADRs include:
 - [ADR 0011: Use Selenium Grid for Browser Automation](adr/0011-use-selenium-grid-for-browser-automation.md)
 - [ADR 0002: Store Screenshots, Downloads, and Diagnostics as Managed Artifacts](adr/0002-store-screenshots-and-downloads.md)
 - [ADR 0005: Use Docker Compose for Local Orchestration](adr/0005-use-docker-compose-for-local-orchestration.md)
+
+## Development Guides
+
+The [Dev Guide](dev-guide/index.md) collects local setup notes for:
+
+- [Trails Service](dev-guide/trails-service.md)
+- [Trails Frontend](dev-guide/trails-frontend.md)
+- [Trails Scout](dev-guide/trails-scout.md)
+- [Trails Docs](dev-guide/trails-docs.md)
 
 ## Documentation Conventions
 
