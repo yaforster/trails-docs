@@ -2,7 +2,15 @@ services:
   trails-docs:
     image: squidfunk/mkdocs-material
     ports:
-      - "8811:8000"
+      - "${TRAILS_DOCS_HOST_BIND:-127.0.0.1}:${TRAILS_DOCS_HOST_PORT:-8811}:8000"
     volumes:
       - .:/docs
     command: serve --dev-addr=0.0.0.0:8000
+    networks:
+      - default
+      - trails-public
+
+networks:
+  trails-public:
+    name: trails-public
+    external: true
