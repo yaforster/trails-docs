@@ -39,7 +39,7 @@ Spring Boot backend for API, persistence, security integration, Selenium orchest
 
 <div class="repository-stack">
   <span class="repository-stack-item"><img src="/assets/stack/Angular.png" alt="" aria-hidden="true"><span>Angular 21</span></span>
-  <span class="repository-stack-item"><img src="/assets/stack/primeng.png" alt="" aria-hidden="true"><span>PrimeNG</span></span>
+  <span class="repository-stack-item"><img src="/assets/stack/taiga.svg" alt="" aria-hidden="true"><span>Taiga UI</span></span>
   <span class="repository-stack-item"><img src="/assets/stack/Docker.png" alt="" aria-hidden="true"><span>Docker</span></span>
 </div>
 
