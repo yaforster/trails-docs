@@ -187,4 +187,4 @@ Documentation should be updated when:
 - persistence, security, browser execution, or artifact handling changes
 - a decision is likely to be questioned later
 
-The decision overview in [9. Architecture Decisions](09-architecture-decisions.md) should remain the entry point for technology and architecture decisions.
+The decision overview in [9. Architecture Decisions](../09-architecture-decisions/) should remain the entry point for technology and architecture decisions.

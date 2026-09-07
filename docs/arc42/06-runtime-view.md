@@ -1,5 +1,15 @@
 # 6. Runtime View
 
+<script setup>
+import runtimeAuthenticatedRequest from '../diagrams/runtime-authenticated-request.mmd?raw'
+import runtimeDownloadArtifacts from '../diagrams/runtime-download-artifacts.mmd?raw'
+import runtimeModelingWorkflow from '../diagrams/runtime-modeling-workflow.mmd?raw'
+import runtimeScoutLocatorDiscovery from '../diagrams/runtime-scout-locator-discovery.mmd?raw'
+import runtimeStartup from '../diagrams/runtime-startup.mmd?raw'
+import runtimeTestExecution from '../diagrams/runtime-test-execution.mmd?raw'
+import runtimeTestExecutionFailure from '../diagrams/runtime-test-execution-failure.mmd?raw'
+</script>
+
 This section describes important runtime scenarios in Trails.
 It focuses on behavior that crosses building-block boundaries or explains architectural decisions.
 
@@ -21,9 +31,7 @@ The local runtime is started through Docker Compose.
 MySQL has an explicit health check before Trails Service starts.
 Keycloak and Selenium Hub are started before the service, but the service still needs to tolerate runtime unavailability or misconfiguration.
 
-```mermaid
---8<-- "docs/diagrams/runtime-startup.mmd"
-```
+<MermaidDiagram :code="runtimeStartup" />
 
 Important runtime points:
 
@@ -38,9 +46,7 @@ Important runtime points:
 Trails can run unsecured or as an OAuth2 resource server.
 When OAuth2/JWT is enabled, frontend requests include a bearer token and the backend validates the token before invoking protected operations.
 
-```mermaid
---8<-- "docs/diagrams/runtime-authenticated-request.mmd"
-```
+<MermaidDiagram :code="runtimeAuthenticatedRequest" />
 
 Role and permission information affects exposed capabilities and HATEOAS links.
 The frontend should follow returned links and capability information instead of assuming that every operation is always available.
@@ -57,9 +63,7 @@ Most ordinary user workflows follow the same pattern:
 6. persistence adapters store or load data
 7. the response is returned with HATEOAS links
 
-```mermaid
---8<-- "docs/diagrams/runtime-modeling-workflow.mmd"
-```
+<MermaidDiagram :code="runtimeModelingWorkflow" />
 
 This runtime flow is intentionally adapter-heavy at the boundary.
 Validation, DTO mapping, generated API models, HATEOAS links, and database entities should stay outside the core domain model.
@@ -70,9 +74,7 @@ Test execution is asynchronous.
 The API accepts a run request, creates an execution ID, starts execution in a task executor, and returns `202 Accepted`.
 The client can subscribe to server-sent events for that execution ID.
 
-```mermaid
---8<-- "docs/diagrams/runtime-test-execution.mmd"
-```
+<MermaidDiagram :code="runtimeTestExecution" />
 
 The backend execution flow is:
 
@@ -99,9 +101,7 @@ The currently used SSE event names are:
 
 Failures during asynchronous execution are logged and published as failed terminal events.
 
-```mermaid
---8<-- "docs/diagrams/runtime-test-execution-failure.mmd"
-```
+<MermaidDiagram :code="runtimeTestExecutionFailure" />
 
 This behavior is important because the original HTTP request has already returned `202 Accepted`.
 After acceptance, the client must use the event stream and result links to observe what happened.
@@ -113,9 +113,7 @@ That makes late subscribers more robust during one service process lifetime, but
 
 Browser downloads are handled through Selenium managed downloads rather than by assuming a shared filesystem between Trails Service and browser nodes.
 
-```mermaid
---8<-- "docs/diagrams/runtime-download-artifacts.mmd"
-```
+<MermaidDiagram :code="runtimeDownloadArtifacts" />
 
 Important runtime rules:
 
@@ -133,9 +131,7 @@ This design keeps remote browser execution viable even when browser nodes run in
 Trails Scout runs in the user's browser and operates close to the application under test.
 This is different from Selenium execution, which runs in remote browser nodes controlled by the backend.
 
-```mermaid
---8<-- "docs/diagrams/runtime-scout-locator-discovery.mmd"
-```
+<MermaidDiagram :code="runtimeScoutLocatorDiscovery" />
 
 The browser extension exists because locator discovery needs access to the inspected page and user interaction context.
 The long-term integration contract between Trails Scout and Trails Service should remain explicit as the extension matures.

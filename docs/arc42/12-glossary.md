@@ -39,7 +39,7 @@ The definitions focus on how the terms are used inside Trails.
 | Locator | A selector-like expression used to find a UI element on a web page. Trails standardizes on the term "locator" rather than "selector". |
 | Managed Download | Selenium mechanism for retrieving files downloaded by a remote browser session without relying on a shared filesystem. |
 | Mermaid | Text-based diagram syntax used for diagrams in the documentation. Mermaid source files live in `docs/diagrams`. |
-| MkDocs Material | Documentation site generator and theme used for the Trails Docs website. |
+| VitePress | Documentation site generator used for the Trails Docs website. |
 | MySQL | Relational database used for structured Trails data. |
 | OAuth2/JWT Mode | Optional secured backend mode where API requests require valid bearer tokens and role mapping. |
 | OpenAPI | Contract format used as the source of truth for the Trails REST API. |
@@ -60,7 +60,7 @@ The definitions focus on how the terms are used inside Trails.
 | Test Plan | A modeled set of browser actions and paths that can be executed by Trails. |
 | Test Run | A persisted execution result of a test plan. |
 | Test Set | Runtime grouping of test execution work, commonly arranged per selected browser. |
-| Trails Docs | The MkDocs Material documentation site containing ARC42 documentation, ADRs, and diagram sources. |
+| Trails Docs | The VitePress documentation site containing ARC42 documentation, ADRs, and diagram sources. |
 | Trails Frontend | Angular web application used to interact with Trails from a browser. |
 | Trails Scout | Browser extension used to inspect pages and identify locator candidates. |
 | Trails Service | Spring Boot backend service that owns the core Trails API, persistence integration, Selenium orchestration, execution results, and security integration. |

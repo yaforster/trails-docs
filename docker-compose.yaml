@@ -1,11 +1,13 @@
 services:
   trails-docs:
-    image: squidfunk/mkdocs-material
+    image: node:22-alpine
+    working_dir: /app
     ports:
-      - "${TRAILS_DOCS_HOST_BIND:-127.0.0.1}:${TRAILS_DOCS_HOST_PORT:-8811}:8000"
+      - "${TRAILS_DOCS_HOST_BIND:-127.0.0.1}:${TRAILS_DOCS_HOST_PORT:-8811}:5173"
     volumes:
-      - .:/docs
-    command: serve --dev-addr=0.0.0.0:8000
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm ci && npm run docs:dev -- --host 0.0.0.0"
     networks:
       - default
       - trails-public

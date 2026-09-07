@@ -1,0 +1,24 @@
+name: Deploy documentation
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run docs:build
+      - uses: codeberg.org/git-pages/action@v2
+        with:
+          source: site
+          token: ${{ forge.token }}
+          server: codeberg.page
+          site: https://docs.trailstestplatform.org/

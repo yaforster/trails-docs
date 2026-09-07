@@ -55,7 +55,7 @@ Trails consists of several components and supporting systems.
 | Selenium Grid | Remote browser execution infrastructure used by Trails Service. |
 | Browser nodes | Chrome, Firefox, and Edge nodes attached to Selenium Grid. |
 | Keycloak | Optional local identity provider for OAuth2/JWT-based security scenarios. |
-| Documentation site | MkDocs Material site containing ARC42 architecture documentation and ADRs. |
+| Documentation site | VitePress site containing ARC42 architecture documentation and ADRs. |
 | Application under test | External web application opened by Selenium-controlled browsers. |
 | Generated artifacts storage | Storage location for screenshots, downloads, and other execution artifacts. |
 

@@ -8,10 +8,10 @@ These pages add the cross-project context that is useful before starting develop
 
 | Project | Purpose | Guide |
 | --- | --- | --- |
-| `trails-service` | Spring Boot backend, API, persistence, security, Selenium orchestration. | [Trails Service](trails-service.md) |
-| `trails-frontend` | Angular frontend for modeling, execution, results, metrics, and administration workflows. | [Trails Frontend](trails-frontend.md) |
-| `trails-scout` | Browser extension for locator discovery on applications under test. | [Trails Scout](trails-scout.md) |
-| `trails-docs` | MkDocs Material documentation site containing ARC42 chapters, ADRs, and diagrams. | [Trails Docs](trails-docs.md) |
+| `trails-service` | Spring Boot backend, API, persistence, security, Selenium orchestration. | [Trails Service](trails-service/) |
+| `trails-frontend` | Angular frontend for modeling, execution, results, metrics, and administration workflows. | [Trails Frontend](trails-frontend/) |
+| `trails-scout` | Browser extension for locator discovery on applications under test. | [Trails Scout](trails-scout/) |
+| `trails-docs` | VitePress documentation site containing ARC42 chapters, ADRs, and diagrams. | [Trails Docs](trails-docs/) |
 
 ## Workspace Assumptions
 

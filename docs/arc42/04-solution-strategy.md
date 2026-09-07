@@ -11,7 +11,7 @@ Trails is organized as a container-capable, local-first system made of focused c
 - an Angular frontend for human interaction
 - a browser extension for capturing UI element locator information
 - supporting infrastructure such as MySQL, Selenium Grid, browser nodes, and optional Keycloak
-- a separate MkDocs-based documentation site for architecture documentation and ADRs
+- a separate VitePress documentation site for architecture documentation and ADRs
 
 The architecture favors established technologies, explicit boundaries, and pragmatic operational simplicity.
 This matches the current single-maintainer context while still leaving room for later growth.
@@ -20,7 +20,7 @@ This matches the current single-maintainer context while still leaving room for 
 
 | Strategy | Description | Supports |
 | --- | --- | --- |
-| Use established technology stacks | Trails uses mainstream frameworks such as Spring Boot, Angular, Selenium, MySQL, Docker Compose, and MkDocs Material. | Maintainability, deployability, lower technology risk |
+| Use established technology stacks | Trails uses mainstream frameworks such as Spring Boot, Angular, Selenium, MySQL, Docker Compose, and VitePress. | Maintainability, deployability, lower technology risk |
 | Keep domain logic independent | Core domain and application behavior should remain independent of REST, database, Selenium, and security adapter details. | Maintainability, testability |
 | Isolate external dependencies | Important third-party APIs should be accessed through Trails-owned services, interfaces, or adapters. | Maintainability, replaceability, controlled coupling |
 | Treat browser automation as unreliable I/O | Selenium execution is handled as an external, failure-prone integration rather than as simple in-process code. | Reliability, observability |
@@ -103,7 +103,7 @@ Identity provider internals, such as Keycloak configuration details, remain outs
 
 ## Documentation Strategy
 
-Architecture documentation is maintained in a separate MkDocs Material site.
+Architecture documentation is maintained in a separate VitePress site.
 ARC42 chapters describe the stable architecture view, while ADRs capture individual decisions and their context.
 
 The documentation is not a separate afterthought.

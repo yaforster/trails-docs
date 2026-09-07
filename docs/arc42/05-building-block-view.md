@@ -1,5 +1,12 @@
 # 5. Building Block View
 
+<script setup>
+import buildingBlockLevel1 from '../diagrams/building-block-level-1.mmd?raw'
+import trailsFrontendBuildingBlocks from '../diagrams/trails-frontend-building-blocks.mmd?raw'
+import trailsScoutBuildingBlocks from '../diagrams/trails-scout-building-blocks.mmd?raw'
+import trailsServiceBuildingBlocks from '../diagrams/trails-service-building-blocks.mmd?raw'
+</script>
+
 This section describes the static structure of Trails.
 It starts with the whole system and then opens the most important internal building blocks.
 
@@ -9,16 +16,14 @@ The most detailed view is currently the backend service, because it contains the
 
 At the highest level, Trails consists of the backend service, frontend, browser extension, documentation site, and supporting infrastructure.
 
-```mermaid
---8<-- "docs/diagrams/building-block-level-1.mmd"
-```
+<MermaidDiagram :code="buildingBlockLevel1" />
 
 | Building Block | Responsibility |
 | --- | --- |
 | Trails Service | Central backend for Trails data, use cases, REST/HATEOAS API, persistence, browser automation orchestration, security integration, and execution results. |
 | Trails Frontend | Angular web application for human interaction with Trails. |
 | Trails Scout | Browser extension for identifying locators and page elements in the application under test. |
-| Trails Docs | MkDocs Material documentation site containing ARC42 documentation and ADRs. |
+| Trails Docs | VitePress documentation site containing ARC42 documentation and ADRs. |
 | MySQL | Relational persistence for structured Trails data. |
 | Selenium Grid and browser nodes | Remote browser execution infrastructure. |
 | Keycloak | Optional local OAuth2/JWT identity provider for secured scenarios. |
@@ -37,9 +42,7 @@ The architecture tests enforce important dependency rules:
 - database adapter internals must not leak to other packages
 - non-API adapters must not depend on the API adapter
 
-```mermaid
---8<-- "docs/diagrams/trails-service-building-blocks.mmd"
-```
+<MermaidDiagram :code="trailsServiceBuildingBlocks" />
 
 | Building Block | Package Area | Responsibility |
 | --- | --- | --- |
@@ -83,9 +86,7 @@ The architecture tests enforce important dependency rules:
 
 Trails Frontend is an Angular application organized around application shell, shared services, generated API clients, and feature areas.
 
-```mermaid
---8<-- "docs/diagrams/trails-frontend-building-blocks.mmd"
-```
+<MermaidDiagram :code="trailsFrontendBuildingBlocks" />
 
 | Building Block | Package Area | Responsibility |
 | --- | --- | --- |
@@ -108,9 +109,7 @@ The frontend may handle interaction state, client-side presentation, and user fe
 Trails Scout is a browser extension for identifying locators and page elements in the application under test.
 It is separate from the Angular frontend because locator discovery needs direct access to the inspected page context.
 
-```mermaid
---8<-- "docs/diagrams/trails-scout-building-blocks.mmd"
-```
+<MermaidDiagram :code="trailsScoutBuildingBlocks" />
 
 | Building Block | Package Area | Responsibility |
 | --- | --- | --- |
@@ -123,7 +122,7 @@ It is separate from the Angular frontend because locator discovery needs direct 
 
 ## Level 2: Documentation Site
 
-Trails Docs is a separate MkDocs Material site.
+Trails Docs is a separate VitePress site.
 It contains the ARC42 architecture documentation, ADRs, and diagram sources.
 
 | Building Block | Responsibility |
@@ -131,7 +130,7 @@ It contains the ARC42 architecture documentation, ADRs, and diagram sources.
 | `docs/arc42` | Stable architecture documentation structured by ARC42 chapters. |
 | `docs/adr` | Architecture decision records for point-in-time decisions. |
 | `docs/diagrams` | Mermaid source files for diagrams referenced from documentation pages. |
-| `mkdocs.yaml` | Site configuration, navigation, theme, Markdown extensions, and Mermaid/snippet support. |
+| `docs/.vitepress/config.ts` | Site configuration, navigation, theme, and route rewrites. |
 | `docker-compose.yaml` | Local containerized documentation server. |
 
 ## Dependency Rules
@@ -144,7 +143,7 @@ The most important building-block rules are:
 - Non-API adapters should not depend on API adapters.
 - Selenium/WebDriver details should stay inside browser/test adapters.
 - Frontend code should use generated API contracts and HATEOAS links instead of hard-coded backend URL assumptions.
-- Documentation diagrams should live in `docs/diagrams` and be included from Markdown pages.
+- Documentation diagrams should live in `docs/diagrams` and be imported from Markdown pages.
 
 ## Open Points
 

@@ -10,18 +10,18 @@ It is meant to explain what the system is, why it is shaped the way it is, where
 
 | Topic | Start With |
 | --- | --- |
-| New to Trails | [Introduction and Goals](arc42/01-introduction-goals.md) |
-| Code repositories | [Repositories](repositories.md) |
-| System boundary and external systems | [Context and Scope](arc42/03-context-scope.md) |
-| Main architecture approach | [Solution Strategy](arc42/04-solution-strategy.md) |
-| Static structure | [Building Block View](arc42/05-building-block-view.md) |
-| Runtime behavior | [Runtime View](arc42/06-runtime-view.md) |
-| Docker and deployment shape | [Deployment View](arc42/07-deployment-view.md) |
-| Repeating architecture concepts | [Crosscutting Concepts](arc42/08-crosscutting-concepts.md) |
-| Technology decisions | [Architecture Decisions](arc42/09-architecture-decisions.md) |
-| Local development setup | [Dev Guide](dev-guide/index.md) |
-| Risks and technical debt | [Risks and Technical Debt](arc42/11-risks-technical-debt.md) |
-| Terminology | [Glossary](arc42/12-glossary.md) |
+| New to Trails | [Introduction and Goals](arc42/01-introduction-goals/) |
+| Code repositories | [Repositories](repositories/) |
+| System boundary and external systems | [Context and Scope](arc42/03-context-scope/) |
+| Main architecture approach | [Solution Strategy](arc42/04-solution-strategy/) |
+| Static structure | [Building Block View](arc42/05-building-block-view/) |
+| Runtime behavior | [Runtime View](arc42/06-runtime-view/) |
+| Docker and deployment shape | [Deployment View](arc42/07-deployment-view/) |
+| Repeating architecture concepts | [Crosscutting Concepts](arc42/08-crosscutting-concepts/) |
+| Technology decisions | [Architecture Decisions](arc42/09-architecture-decisions/) |
+| Local development setup | [Dev Guide](dev-guide/) |
+| Risks and technical debt | [Risks and Technical Debt](arc42/11-risks-technical-debt/) |
+| Terminology | [Glossary](arc42/12-glossary/) |
 
 ## What Trails Contains
 
@@ -33,51 +33,51 @@ It is meant to explain what the system is, why it is shaped the way it is, where
 | MySQL | Relational database for structured Trails data. |
 | Selenium Grid | Remote browser execution infrastructure. |
 | Keycloak | Optional local OAuth2/JWT provider for secured scenarios. |
-| Trails Docs | This MkDocs Material documentation site. |
+| Trails Docs | This VitePress documentation site. |
 
 ## Repositories
 
 The Trails workspace is split into separate Codeberg repositories.
-See [Repositories](repositories.md) for badge-style links, versions, and repository responsibilities.
+See [Repositories](repositories/) for badge-style links, versions, and repository responsibilities.
 
 ## Architecture Documentation
 
 The architecture documentation follows the ARC42 structure:
 
-- [1. Introduction and Goals](arc42/01-introduction-goals.md)
-- [2. Constraints](arc42/02-constraints.md)
-- [3. Context and Scope](arc42/03-context-scope.md)
-- [4. Solution Strategy](arc42/04-solution-strategy.md)
-- [5. Building Block View](arc42/05-building-block-view.md)
-- [6. Runtime View](arc42/06-runtime-view.md)
-- [7. Deployment View](arc42/07-deployment-view.md)
-- [8. Crosscutting Concepts](arc42/08-crosscutting-concepts.md)
-- [9. Architecture Decisions](arc42/09-architecture-decisions.md)
-- [10. Quality Requirements](arc42/10-quality-requirements.md)
-- [11. Risks and Technical Debt](arc42/11-risks-technical-debt.md)
-- [12. Glossary](arc42/12-glossary.md)
+- [1. Introduction and Goals](arc42/01-introduction-goals/)
+- [2. Constraints](arc42/02-constraints/)
+- [3. Context and Scope](arc42/03-context-scope/)
+- [4. Solution Strategy](arc42/04-solution-strategy/)
+- [5. Building Block View](arc42/05-building-block-view/)
+- [6. Runtime View](arc42/06-runtime-view/)
+- [7. Deployment View](arc42/07-deployment-view/)
+- [8. Crosscutting Concepts](arc42/08-crosscutting-concepts/)
+- [9. Architecture Decisions](arc42/09-architecture-decisions/)
+- [10. Quality Requirements](arc42/10-quality-requirements/)
+- [11. Risks and Technical Debt](arc42/11-risks-technical-debt/)
+- [12. Glossary](arc42/12-glossary/)
 
 ## Architecture Decisions
 
 ADRs capture point-in-time decisions and their consequences.
-The decision overview is in [Architecture Decisions](arc42/09-architecture-decisions.md).
+The decision overview is in [Architecture Decisions](arc42/09-architecture-decisions/).
 
 Key ADRs include:
 
-- [ADR 0009: Use Spring Boot for the Backend Service](adr/0009-use-spring-boot-for-backend-service.md)
-- [ADR 0010: Use Angular for the Frontend](adr/0010-use-angular-for-frontend.md)
-- [ADR 0011: Use Selenium Grid for Browser Automation](adr/0011-use-selenium-grid-for-browser-automation.md)
-- [ADR 0002: Store Screenshots, Downloads, and Diagnostics as Managed Artifacts](adr/0002-store-screenshots-and-downloads.md)
-- [ADR 0005: Use Docker Compose for Local Orchestration](adr/0005-use-docker-compose-for-local-orchestration.md)
+- [ADR 0009: Use Spring Boot for the Backend Service](adr/0009-use-spring-boot-for-backend-service/)
+- [ADR 0010: Use Angular for the Frontend](adr/0010-use-angular-for-frontend/)
+- [ADR 0011: Use Selenium Grid for Browser Automation](adr/0011-use-selenium-grid-for-browser-automation/)
+- [ADR 0002: Store Screenshots, Downloads, and Diagnostics as Managed Artifacts](adr/0002-store-screenshots-and-downloads/)
+- [ADR 0005: Use Docker Compose for Local Orchestration](adr/0005-use-docker-compose-for-local-orchestration/)
 
 ## Development Guides
 
-The [Dev Guide](dev-guide/index.md) collects local setup notes for:
+The [Dev Guide](dev-guide/) collects local setup notes for:
 
-- [Trails Service](dev-guide/trails-service.md)
-- [Trails Frontend](dev-guide/trails-frontend.md)
-- [Trails Scout](dev-guide/trails-scout.md)
-- [Trails Docs](dev-guide/trails-docs.md)
+- [Trails Service](dev-guide/trails-service/)
+- [Trails Frontend](dev-guide/trails-frontend/)
+- [Trails Scout](dev-guide/trails-scout/)
+- [Trails Docs](dev-guide/trails-docs/)
 
 ## Documentation Conventions
 

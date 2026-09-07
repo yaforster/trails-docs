@@ -1,5 +1,14 @@
 # 7. Deployment View
 
+<script setup>
+import backendStartupDependencies from '../diagrams/backend-startup-dependencies.mmd?raw'
+import browserAutomationSequence from '../diagrams/browser-automation-sequence.mmd?raw'
+import containerNetworking from '../diagrams/container-networking.mmd?raw'
+import deploymentContext from '../diagrams/deployment-context.mmd?raw'
+import localComposeDeployment from '../diagrams/local-compose-deployment.mmd?raw'
+import persistenceVolumes from '../diagrams/persistence-volumes.mmd?raw'
+</script>
+
 This section describes how Trails is deployed in its current local-first architecture.
 The deployment model is intentionally based on Docker Compose and readily available container images.
 
@@ -12,14 +21,12 @@ Trails is deployed as several containerized parts:
 
 - Trails Service and its supporting backend infrastructure.
 - Trails Frontend as a separately built web application container.
-- Trails Docs as a MkDocs Material documentation container.
+- Trails Docs as a VitePress documentation container.
 - Trails Scout as a browser extension installed into a user's browser rather than as a server-side container.
 
 The backend infrastructure currently includes MySQL, optional Keycloak, Selenium Grid, and browser nodes for Chrome, Firefox, and Edge.
 
-```mermaid
---8<-- "docs/diagrams/deployment-context.mmd"
-```
+<MermaidDiagram :code="deploymentContext" />
 
 ## Containers and Runtime Nodes
 
@@ -33,7 +40,7 @@ The backend infrastructure currently includes MySQL, optional Keycloak, Selenium
 | Selenium Firefox node | `selenium/node-firefox:4.43.0` | Remote Firefox browser sessions. | Stateless; managed downloads are retrieved through Selenium. |
 | Selenium Edge node | `selenium/node-edge:4.43.0` | Remote Edge browser sessions. | Stateless; managed downloads are retrieved through Selenium. |
 | `trails-frontend` | Container built from `trails-frontend/Dockerfile` | Serves the Angular frontend as static web assets. | Stateless. |
-| `trails-docs` | `squidfunk/mkdocs-material` | Serves the documentation website. | Source files are mounted from the workspace. |
+| `trails-docs` | `node:22-alpine` with VitePress | Serves the documentation website. | Source files are mounted from the workspace. |
 | Trails Scout | Browser extension | Helps identify UI element locators in the browser. | Installed in the user's browser, not deployed as a backend service. |
 
 ## Local Docker Compose Deployment
@@ -44,20 +51,16 @@ The current compose files are split by project:
 | --- | --- | --- |
 | `trails-service/docker-compose.yml` | Backend service, MySQL, Keycloak, Selenium Grid, and browser nodes. | `8080` for Trails Service, `3309` for MySQL, `8081` for Keycloak. |
 | `trails-frontend/docker-compose.yml` | Frontend web application. | `4200` by default. |
-| `trails-docs/docker-compose.yaml` | Documentation website. | `8811` for the host, mapped to container port `8000`. |
+| `trails-docs/docker-compose.yaml` | Documentation website. | `8811` for the host, mapped to container port `5173`. |
 
-```mermaid
---8<-- "docs/diagrams/local-compose-deployment.mmd"
-```
+<MermaidDiagram :code="localComposeDeployment" />
 
 ## Backend Infrastructure
 
 The backend compose setup starts MySQL before Trails Service and waits for the MySQL health check.
 Keycloak and Selenium Hub are started before Trails Service, but they are not currently guarded by deep readiness checks.
 
-```mermaid
---8<-- "docs/diagrams/backend-startup-dependencies.mmd"
-```
+<MermaidDiagram :code="backendStartupDependencies" />
 
 Important backend deployment properties:
 
@@ -73,9 +76,7 @@ Important backend deployment properties:
 Trails Service does not launch local browser executables.
 It creates remote browser sessions through Selenium Grid.
 
-```mermaid
---8<-- "docs/diagrams/browser-automation-sequence.mmd"
-```
+<MermaidDiagram :code="browserAutomationSequence" />
 
 This deployment choice removes host-browser dependencies, but it makes container networking explicit.
 When a browser node opens a URL, the URL is resolved from inside the browser node container, not from the user's host browser and not from Trails Service.
@@ -92,9 +93,7 @@ The most important deployment risk is confusing which runtime environment resolv
 | Keycloak issuer URL from host | The URL used by the user's browser or frontend. |
 | Keycloak JWK URL from service | The URL used by Trails Service inside the Docker network. |
 
-```mermaid
---8<-- "docs/diagrams/container-networking.mmd"
-```
+<MermaidDiagram :code="containerNetworking" />
 
 For this reason, Trails distinguishes service-internal URLs from browser-facing base URLs.
 Stages that point to a host-local application may need a browser-facing base URL that works from inside Selenium browser containers.
@@ -120,9 +119,7 @@ Template files should describe required variables without containing real secret
 
 The current persistent runtime state is held primarily in Docker volumes:
 
-```mermaid
---8<-- "docs/diagrams/persistence-volumes.mmd"
-```
+<MermaidDiagram :code="persistenceVolumes" />
 
 Generated execution artifacts such as screenshots, downloads, and diagnostics are part of the Trails runtime model.
 Their final deployment storage strategy must remain explicit.

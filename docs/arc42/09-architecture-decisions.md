@@ -27,18 +27,18 @@ Small implementation choices do not need their own ADR unless they become archit
 
 | Decision | Current Choice | Status | Detailed ADR |
 | --- | --- | --- | --- |
-| Core technology principle | Established implementation technologies for backend, frontend, and browser automation | Accepted | [ADR 0001](../adr/0001-use-established-core-implementation-technologies.md) |
-| Backend framework | Spring Boot | Accepted | [ADR 0009](../adr/0009-use-spring-boot-for-backend-service.md) |
-| Frontend framework | Angular | Accepted | [ADR 0010](../adr/0010-use-angular-for-frontend.md) |
-| Browser automation | Selenium Grid with remote browser nodes | Accepted | [ADR 0011](../adr/0011-use-selenium-grid-for-browser-automation.md) |
-| Backend API contract | OpenAPI-driven REST/HATEOAS API | Accepted | [ADR 0003](../adr/0003-use-openapi-as-api-contract.md) |
-| Persistence database | MySQL | Accepted | [ADR 0004](../adr/0004-use-mysql-and-liquibase.md) |
-| Database migration tool | Liquibase | Accepted | [ADR 0004](../adr/0004-use-mysql-and-liquibase.md) |
-| Browser locator assistant | Trails Scout browser extension | Accepted | [ADR 0008](../adr/0008-build-trails-scout-as-browser-extension.md) |
-| Containerized local operation | Docker Compose | Accepted | [ADR 0005](../adr/0005-use-docker-compose-for-local-orchestration.md) |
-| Optional identity provider for local security scenarios | Keycloak | Accepted | [ADR 0006](../adr/0006-use-keycloak-for-local-oauth2-scenarios.md) |
-| Generated artifacts | Store screenshots, downloads, and diagnostics as traceable execution artifacts | Accepted | [ADR 0002](../adr/0002-store-screenshots-and-downloads.md) |
-| Architecture documentation | MkDocs Material with ARC42 and ADRs | Accepted | [ADR 0007](../adr/0007-use-mkdocs-material-arc42-and-adrs.md) |
+| Core technology principle | Established implementation technologies for backend, frontend, and browser automation | Accepted | [ADR 0001](../../adr/0001-use-established-core-implementation-technologies/) |
+| Backend framework | Spring Boot | Accepted | [ADR 0009](../../adr/0009-use-spring-boot-for-backend-service/) |
+| Frontend framework | Angular | Accepted | [ADR 0010](../../adr/0010-use-angular-for-frontend/) |
+| Browser automation | Selenium Grid with remote browser nodes | Accepted | [ADR 0011](../../adr/0011-use-selenium-grid-for-browser-automation/) |
+| Backend API contract | OpenAPI-driven REST/HATEOAS API | Accepted | [ADR 0003](../../adr/0003-use-openapi-as-api-contract/) |
+| Persistence database | MySQL | Accepted | [ADR 0004](../../adr/0004-use-mysql-and-liquibase/) |
+| Database migration tool | Liquibase | Accepted | [ADR 0004](../../adr/0004-use-mysql-and-liquibase/) |
+| Browser locator assistant | Trails Scout browser extension | Accepted | [ADR 0008](../../adr/0008-build-trails-scout-as-browser-extension/) |
+| Containerized local operation | Docker Compose | Accepted | [ADR 0005](../../adr/0005-use-docker-compose-for-local-orchestration/) |
+| Optional identity provider for local security scenarios | Keycloak | Accepted | [ADR 0006](../../adr/0006-use-keycloak-for-local-oauth2-scenarios/) |
+| Generated artifacts | Store screenshots, downloads, and diagnostics as traceable execution artifacts | Accepted | [ADR 0002](../../adr/0002-store-screenshots-and-downloads/) |
+| Architecture documentation | VitePress with ARC42 and ADRs | Accepted | [ADR 0012](../../adr/0012-use-vitepress-for-documentation/) |
 
 ## Technology Decisions
 
@@ -60,44 +60,46 @@ The detailed justification for significant choices belongs in ADRs.
 | Browser extension | TypeScript, Vite, and WebExtension APIs | Suitable stack for building Trails Scout as a browser extension. |
 | Local orchestration | Docker Compose | Simple container orchestration for local development and small-scale operation. |
 | Optional authentication | OAuth2/JWT with Keycloak for local scenarios | Allows authenticated operation while keeping local development practical. |
-| Documentation | MkDocs Material | Provides an interactive documentation site with navigation, search, and Markdown-based content. |
+| Documentation | VitePress | Provides an interactive documentation site with navigation, search, and Markdown-based content. |
 
 ## Decisions Covered By ADRs
 
 The following accepted choices are covered by ADRs.
 Where a row in the decision overview names a specific technology or architectural mechanism, the linked ADR should explain that specific decision rather than only mention it as part of a broader stack choice.
 
-- [ADR 0001](../adr/0001-use-established-core-implementation-technologies.md): established core implementation technologies as an umbrella decision.
-- [ADR 0002](../adr/0002-store-screenshots-and-downloads.md): screenshots, downloads, and diagnostics as managed execution artifacts.
-- [ADR 0003](../adr/0003-use-openapi-as-api-contract.md): OpenAPI as the source of truth for the backend API contract.
-- [ADR 0004](../adr/0004-use-mysql-and-liquibase.md): MySQL and Liquibase for persistence and schema evolution.
-- [ADR 0005](../adr/0005-use-docker-compose-for-local-orchestration.md): Docker Compose as the local orchestration model.
-- [ADR 0006](../adr/0006-use-keycloak-for-local-oauth2-scenarios.md): Keycloak as the local OAuth2/JWT provider for security scenarios.
-- [ADR 0007](../adr/0007-use-mkdocs-material-arc42-and-adrs.md): MkDocs Material, ARC42, and ADRs for project documentation.
-- [ADR 0008](../adr/0008-build-trails-scout-as-browser-extension.md): Trails Scout as a browser extension rather than only a frontend feature.
-- [ADR 0009](../adr/0009-use-spring-boot-for-backend-service.md): Spring Boot for the backend service.
-- [ADR 0010](../adr/0010-use-angular-for-frontend.md): Angular for the frontend application.
-- [ADR 0011](../adr/0011-use-selenium-grid-for-browser-automation.md): Selenium Grid for scalable remote browser automation.
+- [ADR 0001](../../adr/0001-use-established-core-implementation-technologies/): established core implementation technologies as an umbrella decision.
+- [ADR 0002](../../adr/0002-store-screenshots-and-downloads/): screenshots, downloads, and diagnostics as managed execution artifacts.
+- [ADR 0003](../../adr/0003-use-openapi-as-api-contract/): OpenAPI as the source of truth for the backend API contract.
+- [ADR 0004](../../adr/0004-use-mysql-and-liquibase/): MySQL and Liquibase for persistence and schema evolution.
+- [ADR 0005](../../adr/0005-use-docker-compose-for-local-orchestration/): Docker Compose as the local orchestration model.
+- [ADR 0006](../../adr/0006-use-keycloak-for-local-oauth2-scenarios/): Keycloak as the local OAuth2/JWT provider for security scenarios.
+- [ADR 0007](../../adr/0007-use-mkdocs-material-arc42-and-adrs/): historical MkDocs Material decision, superseded by ADR 0012.
+- [ADR 0008](../../adr/0008-build-trails-scout-as-browser-extension/): Trails Scout as a browser extension rather than only a frontend feature.
+- [ADR 0009](../../adr/0009-use-spring-boot-for-backend-service/): Spring Boot for the backend service.
+- [ADR 0010](../../adr/0010-use-angular-for-frontend/): Angular for the frontend application.
+- [ADR 0011](../../adr/0011-use-selenium-grid-for-browser-automation/): Selenium Grid for scalable remote browser automation.
+- [ADR 0012](../../adr/0012-use-vitepress-for-documentation/): VitePress for current documentation hosting, local search, and Mermaid rendering.
 
 ## Existing ADRs
 
 | ADR | Topic | Status |
 | --- | --- | --- |
-| [0001](../adr/0001-use-established-core-implementation-technologies.md) | Use established core implementation technologies. | Accepted |
-| [0002](../adr/0002-store-screenshots-and-downloads.md) | Store screenshots, downloads, and execution diagnostics as managed Trails artifacts. | Accepted |
-| [0003](../adr/0003-use-openapi-as-api-contract.md) | Use OpenAPI as the backend API contract. | Accepted |
-| [0004](../adr/0004-use-mysql-and-liquibase.md) | Use MySQL and Liquibase for persistence. | Accepted |
-| [0005](../adr/0005-use-docker-compose-for-local-orchestration.md) | Use Docker Compose for local orchestration. | Accepted |
-| [0006](../adr/0006-use-keycloak-for-local-oauth2-scenarios.md) | Use Keycloak for local OAuth2/JWT scenarios. | Accepted |
-| [0007](../adr/0007-use-mkdocs-material-arc42-and-adrs.md) | Use MkDocs Material, ARC42, and ADRs for documentation. | Accepted |
-| [0008](../adr/0008-build-trails-scout-as-browser-extension.md) | Build Trails Scout as a browser extension. | Accepted |
-| [0009](../adr/0009-use-spring-boot-for-backend-service.md) | Use Spring Boot for the backend service. | Accepted |
-| [0010](../adr/0010-use-angular-for-frontend.md) | Use Angular for the frontend. | Accepted |
-| [0011](../adr/0011-use-selenium-grid-for-browser-automation.md) | Use Selenium Grid for browser automation. | Accepted |
+| [0001](../../adr/0001-use-established-core-implementation-technologies/) | Use established core implementation technologies. | Accepted |
+| [0002](../../adr/0002-store-screenshots-and-downloads/) | Store screenshots, downloads, and execution diagnostics as managed Trails artifacts. | Accepted |
+| [0003](../../adr/0003-use-openapi-as-api-contract/) | Use OpenAPI as the backend API contract. | Accepted |
+| [0004](../../adr/0004-use-mysql-and-liquibase/) | Use MySQL and Liquibase for persistence. | Accepted |
+| [0005](../../adr/0005-use-docker-compose-for-local-orchestration/) | Use Docker Compose for local orchestration. | Accepted |
+| [0006](../../adr/0006-use-keycloak-for-local-oauth2-scenarios/) | Use Keycloak for local OAuth2/JWT scenarios. | Accepted |
+| [0007](../../adr/0007-use-mkdocs-material-arc42-and-adrs/) | Use MkDocs Material, ARC42, and ADRs for documentation. | Superseded |
+| [0008](../../adr/0008-build-trails-scout-as-browser-extension/) | Build Trails Scout as a browser extension. | Accepted |
+| [0009](../../adr/0009-use-spring-boot-for-backend-service/) | Use Spring Boot for the backend service. | Accepted |
+| [0010](../../adr/0010-use-angular-for-frontend/) | Use Angular for the frontend. | Accepted |
+| [0011](../../adr/0011-use-selenium-grid-for-browser-automation/) | Use Selenium Grid for browser automation. | Accepted |
+| [0012](../../adr/0012-use-vitepress-for-documentation/) | Use VitePress for documentation. | Accepted |
 
 ## Decision Guidelines
 
-New technology choices should follow the constraints defined in [2. Constraints](02-constraints.md):
+New technology choices should follow the constraints defined in [2. Constraints](../02-constraints/):
 
 - prefer established languages, frameworks, and tools
 - prefer dependencies with an active lifecycle

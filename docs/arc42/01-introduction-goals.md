@@ -38,7 +38,7 @@ The most important quality goals are:
 | 4 | Testability | Core behavior should be verifiable without requiring full browser or infrastructure execution. |
 | 5 | Deployability | Components should be easy to run locally and should remain container-capable. |
 
-These goals are expanded in [10. Quality Requirements](10-quality-requirements.md).
+These goals are expanded in [10. Quality Requirements](../10-quality-requirements/).
 
 ## Stakeholders
 
@@ -87,7 +87,7 @@ Trails does not include:
 - Docker Desktop or the host operating system
 - external CI/CD systems
 
-The system boundary is described in more detail in [3. Context and Scope](03-context-scope.md).
+The system boundary is described in more detail in [3. Context and Scope](../03-context-scope/).
 
 ## Non-Goals
 

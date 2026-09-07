@@ -23,9 +23,9 @@ Trails uses an established technology stack for its main implementation areas:
 
 The detailed decisions are documented separately:
 
-- [ADR 0009](0009-use-spring-boot-for-backend-service.md): Spring Boot for the backend service.
-- [ADR 0010](0010-use-angular-for-frontend.md): Angular for the frontend.
-- [ADR 0011](0011-use-selenium-grid-for-browser-automation.md): Selenium Grid for browser automation.
+- [ADR 0009](../0009-use-spring-boot-for-backend-service/): Spring Boot for the backend service.
+- [ADR 0010](../0010-use-angular-for-frontend/): Angular for the frontend.
+- [ADR 0011](../0011-use-selenium-grid-for-browser-automation/): Selenium Grid for browser automation.
 
 ## Consequences
 
