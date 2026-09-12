@@ -21,31 +21,15 @@ It owns:
 
 ## Local Setup
 
-Use `trails-service/trails-service.env.template` as the source of truth for required runtime settings.
-Copy it to:
+The public service repository supplies a Dockerfile, not a local Compose stack or environment template. Configure an
+external MySQL database and Selenium Grid through the environment variables documented in `trails-service/README.md`.
+Configure optional OAuth2/JWT endpoints and roles the same way. Keep credentials in a secret manager or ignored local
+file; never commit them.
 
-```powershell
-trails-service/trails-service.env
-```
-
-Then fill in local values.
-
-The service compose file starts:
-
-- MySQL
-- Keycloak
-- Trails Service
-- Selenium Hub
-- Chrome, Firefox, and Edge browser nodes
-
-From `trails-service`:
-
-```powershell
-docker compose up -d
-```
-
-The compose setup expects a packaged service JAR when running the service container.
-For IDE development, mirror the same environment variables in the IDE run configuration.
+Private workspace development uses `trails-dev-local/compose.yaml` for MySQL, Keycloak, Trails Service, Selenium Hub,
+and Chrome, Firefox, and Edge nodes. That private repository owns its sanitized template, ports, network instructions,
+and IntelliJ run-configuration templates. For IDE development, mirror required environment variables in the run
+configuration.
 
 ## Important URLs
 
@@ -103,6 +87,8 @@ Important rules:
 - non-API adapters must not depend on the API adapter
 - Selenium/WebDriver details should stay behind Trails-owned abstractions
 
+Persistence packages are feature-owned under `adapter.db` rather than separated globally by entity, repository, or mapper type. Browser execution, WebDriver, runtime time, and test-data concerns likewise remain in dedicated adapter areas. Keep new infrastructure details inside their owning adapter boundary.
+
 ## Adding Browser Actions
 
 Follow the checklist in `trails-service/README.md`.
@@ -119,20 +105,26 @@ A new action usually touches:
 
 Do not add central switch branches where the variant mapper pattern already exists.
 
+Browser actions are contract-first variants and must not retry side-effecting execution. Coordinate click uses locator-free, non-negative signed 32-bit viewport CSS-pixel coordinates from the visible top-left. Resize viewport accepts positive signed 32-bit dimensions and performs one compensated resize to target exact `window.innerWidth` and `window.innerHeight`; mismatch is a diagnostic failure.
+
+## Operation Diagnostics
+
+Instrumented API handlers use a correlation ID for handler, duration, and failure logs. Handler and duration logs are `DEBUG`; failures are `WARN`, so the default `INFO` root level emits failures only. Keep this context scoped to the request or event and never log bearer tokens, browser storage values, or element values.
+
 ## Tests and Verification
 
 Useful commands from `trails-service`:
 
 ```powershell
 .\mvnw test
-.\mvnw verify
+.\mvnw clean verify
 ```
 
 Use focused test runs while developing, but include architecture and mapper tests for changes that touch actions, persistence, or generated API contracts.
 
 ## Common Pitfalls
 
-- Forgetting to update `trails-service.env.template` when adding a runtime setting.
+- Forgetting to document a new runtime setting in `trails-service/README.md` and the private local-runtime template.
 - Using host-local URLs where Selenium browser nodes need container-reachable URLs.
 - Editing generated DTOs instead of the OpenAPI/AsyncAPI source.
 - Adding database fields without Liquibase migrations.

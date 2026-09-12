@@ -9,8 +9,9 @@ import localComposeDeployment from '../diagrams/local-compose-deployment.mmd?raw
 import persistenceVolumes from '../diagrams/persistence-volumes.mmd?raw'
 </script>
 
-This section describes how Trails is deployed in its current local-first architecture.
-The deployment model is intentionally based on Docker Compose and readily available container images.
+This section describes Trails container deployment and its private local-development orchestration.
+The public service repository publishes a source-built container image; a separate private repository owns local Docker
+Compose support and secrets guidance.
 
 The current deployment view focuses on local development and small-scale operation.
 Production-grade deployment, high availability, backup automation, external monitoring, and secret management are not yet primary architectural drivers.
@@ -49,7 +50,7 @@ The current compose files are split by project:
 
 | Compose File | Purpose | Typical Host Port |
 | --- | --- | --- |
-| `trails-service/docker-compose.yml` | Backend service, MySQL, Keycloak, Selenium Grid, and browser nodes. | `8080` for Trails Service, `3309` for MySQL, `8081` for Keycloak. |
+| `trails-dev-local/compose.yaml` (private) | Backend service, MySQL, Keycloak, Selenium Grid, and browser nodes. | `8080` for Trails Service, `3309` for MySQL, `8081` for Keycloak. |
 | `trails-frontend/docker-compose.yml` | Frontend web application. | `4200` by default. |
 | `trails-docs/docker-compose.yaml` | Documentation website. | `8811` for the host, mapped to container port `5173`. |
 
@@ -57,7 +58,7 @@ The current compose files are split by project:
 
 ## Backend Infrastructure
 
-The backend compose setup starts MySQL before Trails Service and waits for the MySQL health check.
+The private backend compose setup starts MySQL before Trails Service and waits for the MySQL health check.
 Keycloak and Selenium Hub are started before Trails Service, but they are not currently guarded by deep readiness checks.
 
 <MermaidDiagram :code="backendStartupDependencies" />
@@ -66,7 +67,7 @@ Important backend deployment properties:
 
 - MySQL state is stored in the `trails-mysql-data` Docker volume.
 - Keycloak state is stored in the `trails-keycloak-data` Docker volume.
-- Trails Service receives runtime configuration through `trails-service.env` and selected container environment variables.
+- Trails Service receives runtime configuration through externally supplied environment variables and selected container environment variables.
 - Selenium browser nodes use `shm_size: 2gb` to reduce browser instability in containers.
 - Selenium managed downloads are enabled on browser nodes.
 - Browser concurrency is controlled through `SELENIUM_NODE_MAX_SESSIONS`.
@@ -100,12 +101,13 @@ Stages that point to a host-local application may need a browser-facing base URL
 
 ## Configuration and Secrets
 
-Runtime configuration is supplied through environment files and container environment variables.
+Runtime configuration is supplied through environment variables and platform secret stores. The private local-runtime
+repository provides an ignored environment file for developer use.
 
 | Configuration Area | Source |
 | --- | --- |
-| Backend service settings | `trails-service.env` and Spring Boot configuration. |
-| Database settings | `SPRING_DATASOURCE_*` values in `trails-service.env`. |
+| Backend service settings | Spring Boot configuration and externally supplied environment variables. |
+| Database settings | Externally supplied `SPRING_DATASOURCE_*` values. |
 | Selenium Grid URL | `SERVICE_WEBDRIVERS_GENERAL_GRIDURL`. |
 | Browser-facing base URL | `SERVICE_WEBDRIVERS_GENERAL_BROWSERBASEURL`. |
 | OAuth2/JWT mode | `SERVICE_API_SECURITY_OAUTH2_ENABLED`. |
@@ -131,7 +133,7 @@ If artifacts are stored on a filesystem, the location should be configured and m
 | --- | --- | --- |
 | Confusing host and container networking | Browser nodes may fail to reach target applications even though they work in the host browser. | Configure browser-facing base URLs explicitly. |
 | Browser node capacity mismatch | Test runs may overload Selenium nodes or fail unpredictably. | Keep Resilience4j bulkheads aligned with Selenium node capacity. |
-| Missing or stale environment files | Containers start with wrong database, security, or browser settings. | Keep `.env.template` files current and document required variables. |
+| Missing or stale runtime configuration | Containers start with wrong database, security, or browser settings. | Document public variables and keep private local templates current. |
 | Unmanaged generated artifacts | Disk usage grows or sensitive files are exposed. | Treat artifacts as managed execution data with explicit storage and retention. |
 | Optional security mode not exercised | Local unsecured mode works while OAuth2/JWT mode regresses. | Test security-enabled deployment paths regularly. |
 | Documentation deployment differs from future PDF generation | Website works, but reproducible PDF export remains unavailable. | Add a dedicated PDF export path when that requirement is implemented. |
