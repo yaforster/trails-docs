@@ -85,6 +85,14 @@ trails-frontend/api
 
 When the backend OpenAPI or AsyncAPI contracts change, update the frontend contract copies and regenerate the client code.
 
+## Test Plan Modelling
+
+The modeller can copy a full JSON definition to the clipboard, download it, paste it, or import it from a JSON file.
+
+The modeller provides local structural feedback for imported and edited definitions. The backend remains authoritative for graph validity, requiring unique action IDs, references to existing actions, no duplicate outgoing edges, exactly one root action, and no cycles. Groups organize actions without changing this graph contract.
+
+Coordinate-click actions use locator-free, non-negative viewport CSS-pixel coordinates from the visible viewport's top-left. Resize-viewport actions require positive width and height values and target exact browser viewport inner dimensions. Keep these controls aligned with the generated API contract; do not infer locator behavior, viewport profiles, or retries in the UI.
+
 ## Docker Runtime
 
 The frontend can be served as a container from `trails-frontend/docker-compose.yml`.
@@ -97,9 +105,10 @@ For active frontend development, the Angular dev server is usually more convenie
 Useful commands:
 
 ```powershell
-npm test
+npm test -- --watch=false
+npm run lint
 npm run format:check
-npm run format
+npm run generate:api
 npm run build
 ```
 
@@ -113,3 +122,4 @@ The project uses Vitest through Angular's test command and Prettier for formatti
 - Letting large components grow instead of splitting by workflow responsibility.
 - Assuming unsecured local mode behaves the same as OAuth2/JWT-enabled mode.
 - Forgetting to regenerate API clients after backend contract changes.
+- Treating client-side graph validation as a replacement for backend validation.

@@ -132,6 +132,8 @@ Logs should contain enough context to identify the affected execution, workflow,
 Trails should make important workflows inspectable.
 This is a core quality concern because many failures happen in external systems or remote browsers.
 
+Instrumented API handlers assign a correlation ID for the processing scope. Handler and duration records are logged at `DEBUG`; failures are logged at `WARN`. The default `INFO` root level therefore shows failures but not routine handler timing. The MDC scope is cleared on every path.
+
 Useful context includes:
 
 - execution identifiers
@@ -142,7 +144,7 @@ Useful context includes:
 - artifact identifiers
 - user or token context when security is enabled
 
-Logs should avoid sensitive values such as credentials, bearer tokens, and sensitive page contents.
+Logs should avoid sensitive values such as credentials, bearer tokens, browser storage values, element values, and sensitive page contents.
 
 ## Security
 

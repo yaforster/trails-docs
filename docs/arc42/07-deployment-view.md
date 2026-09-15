@@ -72,6 +72,68 @@ Important backend deployment properties:
 - Selenium managed downloads are enabled on browser nodes.
 - Browser concurrency is controlled through `SELENIUM_NODE_MAX_SESSIONS`.
 
+## Manual Deployment And Network Contract
+
+Use this contract when infrastructure is provisioned by an enterprise platform, separate hosts, or a Kubernetes-like
+environment instead of the private local Compose setup. Compose image references describe the current development
+topology, not a production support or patch policy: pin, scan, and approve concrete releases. Trails has no defined
+host-OS support matrix. Its container runtime is `eclipse-temurin:25-jre-noble`; a manual JVM deployment needs Java 25.
+Linux amd64 is the practical baseline when Chrome, Firefox, and Edge nodes are all needed because the Selenium Edge
+Linux image is amd64-only.
+
+| Component | Required | Enterprise equivalent |
+| --- | --- | --- |
+| Trails Service | Yes | Image built from `trails-service/Dockerfile` or Java 25 process, normally behind TLS ingress/reverse proxy. Internal HTTP defaults to `8080`. |
+| MySQL | Yes | Persistent managed MySQL or a pinned, vetted MySQL deployment with backups and a least-privilege Trails account. Liquibase owns schema changes; Hibernate validates them. |
+| Selenium Grid Router/Hub | For browser execution | A reachable Grid endpoint. Local reference: `selenium/hub:4.43.0`. |
+| Chrome, Firefox, Edge Grid nodes | For each required browser | Sized, pinned node pools. Local references: `selenium/node-{chrome,firefox,edge}:4.43.0`; browser containers need at least `2g` shared memory and deliberate session limits. |
+| OIDC/JWT provider | Only with OAuth2 enabled | Any compatible provider with issuer/JWK endpoints and Trails role claims. Local Keycloak `26.6.1` is an example, not a requirement. Persist provider state. |
+
+Frontend, documentation, and Scout are clients, not backend dependencies. MySQL must be available before Trails starts.
+Grid and nodes must be available before browser tests are accepted. The identity provider must be available before
+OAuth2/JWT validation is enabled.
+
+### Firewall Rules
+
+| Source | Destination | Port / protocol | Purpose |
+| --- | --- | --- | --- |
+| Client or ingress | Trails Service | Public TLS; normally HTTP `8080` behind proxy | API access and health endpoints. |
+| Trails Service | MySQL | TCP `3306` | Data access and Liquibase. |
+| Trails Service | Grid Router | TCP `4444` | Remote WebDriver sessions. |
+| Selenium node | Grid Hub event bus | TCP `4442`, `4443` | Remote node registration and events. |
+| Grid Hub/Distributor | Selenium node endpoint | TCP `5555` by default | Commands to the node's advertised endpoint. |
+| Selenium node/browser | Application under test | TCP `80`, `443`, or stage-specific | Browser navigation. |
+| Selenium node/browser | Browser base URL | Applicable HTTP(S) port | Rewritten loopback-stage navigation. |
+| Trails Service | OIDC issuer/JWK endpoint | TCP `443` or provider-specific | JWT discovery and keys, when enabled. |
+| User browser/frontend | OIDC issuer | Public TLS | Interactive login, when used. |
+
+Grid event-bus and node ports may remain private for one-host deployments. They need explicit routes for cross-host Grid
+nodes. Do not expose MySQL, Grid control ports, or node endpoints publicly. CORS handling is not a firewall or
+authorization boundary.
+
+### Configuration And Verification
+
+1. Set `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`, and optionally the driver
+   class through the platform secret store.
+2. Set `SERVICE_WEBDRIVERS_GENERAL_GRIDURL` to the Router address reachable from Trails.
+3. Set `SERVICE_WEBDRIVERS_GENERAL_BROWSERBASEURL` when a stage uses `localhost`, `127.0.0.1`, or `::1`. Browser nodes
+   resolve URLs from their own network. Trails preserves the stage path/query/fragment and replaces only scheme and
+   authority, so this value must be reachable from the nodes, not merely from an operator workstation.
+4. Match Trails execution limits with node capacity: `SERVICE_TEST_EXECUTION_MAXIMUM_CONCURRENT_RUNS`,
+   `SERVICE_TEST_EXECUTION_RUN_QUEUE_CAPACITY`, and `SERVICE_TEST_EXECUTION_MAXIMUM_CONCURRENT_TEST_SETS` default to
+   16, 64, and 16 respectively.
+5. When OAuth2 is enabled, configure exactly one issuer URI or JWK-set URI, all Trails role settings, and the required
+   role claim paths. An externally visible issuer URL may intentionally differ from Trails' service-side JWK URL.
+6. Set `SERVER_FORWARD_HEADERS_STRATEGY=framework` when ingress supplies forwarded headers. Keep all credentials in the
+   platform secret store.
+
+Verify DNS, TLS, and every route before startup. Start Trails only after MySQL is available; then check
+`/actuator/health` and `/api/capabilities` through ingress. Verify Grid `/status`, create one session per required
+browser, validate JWT retrieval and roles when enabled, and execute a test through both ordinary and loopback-rewritten
+stage URLs where applicable. Selenium managed downloads retrieve files through Grid, so no shared host download volume
+is required. The service repository [README](https://github.com/yaforster/trails-service#manual-deployment) is the
+operator-facing source for the complete setting names and checks.
+
 ## Browser Automation Deployment
 
 Trails Service does not launch local browser executables.

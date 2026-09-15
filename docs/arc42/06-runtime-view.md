@@ -68,6 +68,17 @@ Most ordinary user workflows follow the same pattern:
 This runtime flow is intentionally adapter-heavy at the boundary.
 Validation, DTO mapping, generated API models, HATEOAS links, and database entities should stay outside the core domain model.
 
+### Test Plan Graphs
+
+The backend only persists a graph with unique action IDs, references to existing actions, no duplicate outgoing edges, exactly one root action, and no cycles. The modeller keeps edits available and provides local structural feedback, but it does not independently enforce every backend rule; the submitted definition remains authoritative.
+
+### Browser Utility Actions
+
+Browser actions are not retried after a side-effecting call.
+
+- Coordinate click uses locator-free, non-negative signed 32-bit viewport CSS-pixel coordinates measured from the visible viewport's top-left. It does not perform element lookup, viewport-size validation, or retries.
+- Resize viewport accepts positive signed 32-bit width and height values. It targets exact `window.innerWidth` and `window.innerHeight` with one compensated Selenium `setSize` call; a mismatch is a technical diagnostic failure, not an emulation/profile fallback or retry.
+
 ## Test Execution
 
 Test execution is asynchronous.
@@ -106,8 +117,9 @@ Failures during asynchronous execution are logged and published as failed termin
 This behavior is important because the original HTTP request has already returned `202 Accepted`.
 After acceptance, the client must use the event stream and result links to observe what happened.
 
-The event hub currently stores terminal events in memory by execution ID.
-That makes late subscribers more robust during one service process lifetime, but it is not durable across service restarts.
+The event hub retains terminal events in memory by execution ID for up to ten minutes and up to 100 events. Older entries are evicted when either limit is exceeded. This improves late subscription during one process lifetime but remains non-durable across service restarts.
+
+An action failure remains the reported action failure even when screenshot capture also fails. Unexpected client-facing failures use a safe message while diagnostics remain available in server logs. Uncaught browser-action errors, including browser storage access errors, currently abort the active path and can produce skipped path results.
 
 ## Download and Artifact Handling
 
@@ -142,7 +154,7 @@ The long-term integration contract between Trails Scout and Trails Service shoul
 | --- | --- |
 | Test execution request handling | Accepted quickly through `202 Accepted`; actual execution runs asynchronously. |
 | Execution observation | Server-sent events keyed by execution ID. |
-| Terminal event replay | In-memory replay for late subscribers during the current service process lifetime. |
+| Terminal event replay | In-memory replay for late subscribers; retained for ten minutes and capped at 100 terminal events. |
 | Browser execution | Remote Selenium Grid sessions. |
 | Browser action retry | Not blindly retried because actions may have side effects. |
 | Session creation protection | Retry, circuit breaker, and browser-specific bulkheads. |

@@ -50,8 +50,8 @@ The architecture tests enforce important dependency rules:
 | Core | `core` | Contains domain concepts, test execution model, action types, result models, validation concepts, deletion concepts, user concepts, and shared value classes. |
 | Application | `app.services` | Defines use case services and service contracts used by adapters. |
 | API Adapter | `adapter.api` | Exposes REST/HATEOAS and AsyncAPI-related interfaces, handles security integration, request validation, API DTO mapping, and link generation. |
-| Database Adapter | `adapter.db` | Implements persistence through entities, repositories, mappers, Liquibase-backed schema, and promotion/reference handling. |
-| Browser/Test Adapter | `adapter.test` | Integrates Selenium/WebDriver and wraps browser execution details. |
+| Database Adapter | `adapter.db` | Implements feature-owned persistence for applications, stages, test data, test plans, users, artifacts, elements, and results. |
+| Browser/Test Adapters | `adapter.test`, `adapter.runtime`, `adapter.testdata` | Isolates execution coordination, Selenium/WebDriver access, runtime time access, and test-data integration. |
 | Capability Adapter | `adapter.capability` | Reports runtime capabilities and restrictions to clients. |
 | Print Adapter | `adapter.print` | Handles print/PDF-related adapter concerns. |
 
@@ -76,11 +76,12 @@ The architecture tests enforce important dependency rules:
 | `adapter.api.rest` | REST controllers, generated DTO mapping, validation, HATEOAS links, and resource-specific API adapters. |
 | `adapter.api.asyncapi` | AsyncAPI/event-related API model and execution event concerns. |
 | `adapter.api.security` | OAuth2/JWT, role extraction, and security adapter behavior. |
-| `adapter.db.entity` | Database entity model. |
-| `adapter.db.repo` | Database repositories. |
-| `adapter.db.mapper` | Conversion between database entities and domain models. |
-| `adapter.db.promotion` | Copying and promotion behavior for test plan/action details. |
-| `adapter.test.driver` | Selenium/WebDriver integration, managed downloads, and driver abstractions. |
+| `adapter.db.<feature>` | Feature-owned persistence packages, including entities, repositories, and mappings for the resource they persist. |
+| `adapter.test.execution` | Test execution coordination and execution-facing adapter behavior. |
+| `adapter.test.webdriver` | Selenium/WebDriver integration, managed downloads, and driver abstractions. |
+| `adapter.runtime.time` | Runtime clock access at the infrastructure boundary. |
+| `adapter.testdata` | Test-data integration at the infrastructure boundary. |
+| `adapter.capability` | Runtime capability and restriction reporting for clients. |
 
 ## Level 2: Trails Frontend
 
@@ -90,19 +91,19 @@ Trails Frontend is an Angular application organized around application shell, sh
 
 | Building Block | Package Area | Responsibility |
 | --- | --- | --- |
-| Application Shell | `app`, `layout` | Top-level routing, layout, and page shell. |
+| Application Shell | `app`, `layout` | Top-level routing and Taiga UI-based page shell. |
 | Auth | `auth` | Login flow, route guards, token handling, and current user profile access. |
 | Workspace Context | `context` | Tracks selected application/stage context used by multiple workflows. |
 | Core Services | `core` | API configuration, capabilities, HATEOAS link helpers, and shared frontend services. |
 | Generated API Clients | `generated` | Generated OpenAPI/AsyncAPI client code and types. |
 | Data Management | `features/data-management` | CRUD and administration workflows for Trails resources. |
-| Test Plan Modeller | `features/test-plan-modeller` | Interactive modeling of test plans and action paths. |
+| Test Plan Modeller | `features/test-plan-modeller` | Interactive graph modelling, local structural feedback, import/export, grouping, and persistence requests for test plans. |
 | Test Results | `features/test-results` | Display and inspection of saved test execution results and artifacts. |
 | Metrics | `features/metrics` | Test run metrics, summaries, timelines, and calendar-related views. |
 | Test Execution Events | `test-execution` | Frontend handling for execution event streams and execution status. |
 
 Frontend business rules should remain aligned with the backend API and domain behavior.
-The frontend may handle interaction state, client-side presentation, and user feedback, but the backend remains the source of truth for persisted Trails data.
+The frontend may handle interaction state, client-side presentation, and user feedback, but the backend remains the source of truth for persisted Trails data and must validate submitted definitions independently.
 
 ## Level 2: Trails Scout
 
