@@ -8,6 +8,10 @@ It is currently sparse, so this page records the important setup and development
 `trails-scout` is a browser extension for identifying locator candidates on pages under test.
 It runs in the user's browser and can inspect the application under test directly, which the main Angular frontend cannot do by itself.
 
+## Element Screenshots
+
+After locator validation, Scout can capture the active tab, scroll to the element, and crop a small-margin screenshot around it. The image stays in popup memory until upload and may contain sensitive content.
+
 ## Project Shape
 
 Important areas:
